@@ -1,0 +1,71 @@
+<!-- 
+    <table>
+    |
+    <tr>: 한 줄
+    |
+    -----------
+    |         |
+    <th>     <td>
+    제목       데이터 출력
+             ------------------------
+             <tr>                </tr>
+                  <th>번호</th>
+                  <th>제목</th>
+                  <th>이름</th>
+             <tr>                 </tr>
+                  <td>1</td>
+                  <td>게시판</td>
+                  <td>홍길동</td>
+             <tr>                 </tr>
+                  <td>1</td>
+                  <td>게시판</td>
+                  <td>홍길동</td>
+             <tr>                 </tr>
+                   <td>1</td>
+                  <td>게시판</td>
+                  <td>홍길동</td>
+          ------------------------------
+          => colspan / rowspan
+             가로병합    세로병합
+          => <thead>
+             <tbody>
+             <tfoot>
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>Table 태그 연습</h3>
+	<table border=1 width=500>
+		<thead>
+			<!-- 한 번만 수행하라 -->
+			<tr>
+				<th>학번</th>
+				<th>이름</th>
+				<th>국어</th>
+				<th>영어</th>
+				<th>수학</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td align="center">1</td><!-- td:일반문자/왼쪽 정렬 -->
+				<th>홍길동</th>
+				<th>100</th>
+				<th>100</th>
+				<th>100</th>
+			</tr>
+			<tr>
+				<td>2</td>
+				<th>심청이</th>
+				<th>100</th>
+				<th>100</th>
+				<th>100</th>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
