@@ -133,7 +133,7 @@ public class BoardList extends HttpServlet {
 		{
 			out.println("<tr>");
 			out.println("<td width=10% align=center>"+vo.getNo()+"</td>");
-			out.println("<td width=45%><a href=>"+vo.getSubject()+"</a>");
+			out.println("<td width=45%><a href=BoardDetail?no="+vo.getNo()+">"+vo.getSubject()+"</a>");
 			out.println("&nbsp;");
 			if(today.equals(vo.getDbday()))
 			{

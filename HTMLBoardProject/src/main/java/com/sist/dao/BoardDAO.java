@@ -104,6 +104,40 @@ public class BoardDAO {
 		return total;
 	}
 	// 2. 상세보기
+	public BoardVO boardDetailData(int no)
+	{
+		BoardVO vo=new BoardVO();
+		try
+		{
+			getConnection();
+			String sql="UPDATE htmlboard SET "
+					+ "hit=hit+1 "
+					+ "WHERE no="+no;
+			ps=conn.prepareStatement(sql);
+			ps.executeUpdate();
+		    sql="SELECT no,name,subject,content,TO_CHAR(regdate,'YYYY-MM-DD HH24:MI:SS'),hit "
+		    		+ "FROM htmlboard "
+		    		+ "WHERE no="+no;
+		    ps=conn.prepareStatement(sql);
+		    ResultSet rs=ps.executeQuery();
+		    rs.next();
+		    vo.setNo(rs.getInt(1));
+		    vo.setName(rs.getString(2));
+		    vo.setSubject(rs.getString(3));
+		    vo.setContent(rs.getString(4));
+		    vo.setDbday(rs.getString(5));
+		    vo.setHit(rs.getInt(6));
+		    rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return vo;
+	}
 	// 3. 글쓰기
 	//=> 웹프로그램(감 익히기) => 화면 이동 -> ㅇ'''''''
 	public void boardInsert(BoardVO vo)
@@ -131,4 +165,50 @@ public class BoardDAO {
 	}
 	// 4. 수정
 	// 5. 삭제
+	public boolean boardDelete(int no,String pwd)
+	{
+		/*
+		 *   오라클 => 사이트에 필요한 데이터 저장
+		 *   => SQL문장 이용
+		 *   자바 => 오라클 연동 / 브라우저 연동
+		 *         => 결과값 받아 브라우저로 전송
+		 *         사용자 요청 받는 경우
+		 *   HTML/CSS => 브라우저 화면 출력
+		 */
+		boolean bCheck=false;
+		try
+		{
+			getConnection();
+			// 1. pwd 체크
+			String sql="SELECT pwd FROM htmlboard "
+					+ "WHERE no="+no;
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			String db_pwd=rs.getString(1);
+			rs.close();
+			
+			if(db_pwd.equals(pwd))
+			{
+				bCheck=true;
+				sql="DELETE FROM htmlboard "
+				   +"WHERE no="+no;
+				ps=conn.prepareStatement(sql);
+				ps.executeUpdate();
+			}
+			else
+			{
+				bCheck=false;
+			}
+			// 2. 삭제
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return bCheck;
+	}
 }
