@@ -1,0 +1,76 @@
+<!-- 
+  가상 선택자
+  태그명:hover
+  태그명:focus
+  태그명:enabled
+  
+  구조 선택자
+  선택자:first-child
+  선택자:last-child
+  선택자:nth-child(수열)
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/* 1. 공통으로 적용되는 CSS 제작
+   2. 각 태그마다 적용되는 CSS 제작
+*/
+img{
+  width:80px;
+  height:100px;
+}
+img:first-child{
+  border:3px solid green;
+}
+img:last-child{
+  border:3px solid green;
+  border-radius: 60px;
+}
+img:nth-child(2n){
+  border:3px dotted red;
+}
+div > p+h1{
+  background: rgb(0,255,255);
+  color:green;
+}
+div > span > h1{
+ background: #8FA8CC
+}
+div > p~h1{
+  color:magenta;
+}
+</style>
+</head>
+<body>
+  <h1>구조 선택자</h1>
+  <img src="image/m1.jpg">
+  <img src="image/m2.jpg">
+  <img src="image/m3.jpg">
+  <img src="image/m4.jpg">
+  <img src="image/m5.jpg">
+  <img src="image/m6.jpg">
+  <img src="image/m7.jpg">
+  <h1>동위 선택자</h1>
+  <!-- 
+    div
+     |
+   ----------
+   |   |    |
+   h1  h2   ul => 동위
+            |
+         --------
+         li     li => 동위
+   -->
+  <div>
+    <p>Hello CSS</p>
+    <h1>형제1</h1>
+    <h1>형제2</h1>
+    <span>
+      <h1>후손1</h1>
+    </span>
+  </div>
+</body>
+</html>

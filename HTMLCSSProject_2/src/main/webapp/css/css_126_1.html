@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.poster{
+  width:120px;
+  height:180px;
+}
+.red{
+  border:2px solid red;
+}
+.blue{
+  border:2px solid blue;
+}
+.green{
+  border:2px solid green;
+}
+input[type="submit"]{
+  border-radius: 10px;
+}
+input[type^="b"]{
+  background: pink;
+}
+input[type$="t"]{
+  background: cyan;	
+}
+input[type*="b"]{
+  background: blue;
+  color:white;
+}
+a[href*="https"]{
+  color:red;
+}
+img[src$="jpg"]{
+  width:250px;
+  height:300px;
+  border: 2px solid green;
+}
+
+/* 아이디명,아이디명,아이디명{
+
+  }
+   클래스명,클래스명,클래스명{
+   
+  }
+   태크명,아이디명,클래스명{
+   
+  }
+  ==> 모두 가능  
+*/
+h2,h3,h4{
+  color:yellow;
+}
+</style>
+</head>
+<body>
+  <h1>클래스명 여러 개 사용(공통적용 / 태그 개별 적용)</h1>
+  <img src="image/m1.jpg" class="poster red">
+  <img src="image/m2.jpg" class="poster blue">
+  <img src="image/m3.jpg" class="poster green">
+  <img src="image/m4.jpg" class="poster">
+  <img src="image/m5.jpg" class="poster">
+  <img src="image/m6.jpg" class="poster">
+  <img src="image/m7.jpg" class="poster">
+  <h1>속성 선택자1</h1>
+  <input type="text" size=20><br>
+  <input type="button" value=Click><br>
+  <input type="submit" value="전송"><br>
+  <input type="password" size=20><br>
+  <h1>속성 선택자2</h1>
+  <a href="http:">CSS 1</a>
+  <a href="https:">CSS 2</a>
+  <a href="http:">CSS 3</a>
+  <h1>속성 선택자3</h1>
+  <img src="image/new.gif">
+  <img src="image/m1.jpg">
+  <img src="image/m2.jpg">
+  <h1>멀티 선택자</h1>
+  <h3>Hello CSS</h3>
+  <h2>Hello CSS</h2>
+  <h4>Hello CSS</h4>
+</body>
+</html>

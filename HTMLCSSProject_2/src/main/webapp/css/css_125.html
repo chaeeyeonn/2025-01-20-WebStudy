@@ -1,0 +1,72 @@
+<!-- 
+  교재 125page~
+  CSS: HTML 내용과는 상관없이 디자인 변경 가능
+  종류)
+      - 외부 CSS: 모든 파일에 적용 가능
+                 파일로 제작(.css)
+        <head>
+          <link rel="stylesheet" href="파일명|URL">
+          URL => bootstrip
+                 ---------약간의 수정 가능(반응형 웹)
+        </head>
+      - 내부 CSS: HTML파일 한 개에 설정(파일 전체 사용 가능)
+        <head>
+          <style>
+            id,class,태그{
+            
+            }
+          </style>
+        </head>
+      - 인라인 CSS: 태그 한 개에 대한 처리
+        --------모든 태그가 가지고 있는 속성
+        => id,class,name,style
+        <태그 style="">
+        
+     CSS는 사용처가 많다 => 태그를 제어 => 태그 찾기(선택자)
+     1. 화면 UI
+     2. 자바스크립트
+     3. 크롤링(Jsoup, 셀리니움)
+     
+     태그, #id, .class{
+     속성:값,
+     속성:값,
+     ...
+     ------ 속성: 이미 지정되어 있다
+     }
+     /* 주석 처리 */
+     예)
+       h1{
+         color:red;
+       }
+       <h1>CSS</h1>
+       <h1 id="aaa">CSS</h1>
+       #aaa{
+       
+       }
+       <h1 class="bbb">CSS</h1>
+       .bbb{
+       
+       }
+    ****특정 HTML태그를 선택할 때 => 선택자(selector)
+    
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+h1{
+  color:red;/* 글자 색상 */
+  background-color:yellow;
+}
+h2{
+  text-align:center;/* 가운데 정렬 */
+}
+</style>
+</head>
+<body>
+  <h1>Hello CSS</h1>
+  <h2>Hello Java</h2>
+</body>
+</html>

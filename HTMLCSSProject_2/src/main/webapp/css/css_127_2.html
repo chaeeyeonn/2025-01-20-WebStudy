@@ -1,0 +1,136 @@
+<!-- 
+  상태 선택자
+  :checked
+  :focus
+  :enabled
+  :disabled
+ -->
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+#a:active,#b:active,#c:active{
+  color:red;
+}
+#a:hover,#b:hover,#c:hover{
+/* hover하면 active는 실행되지 않음 */
+  color:green;
+}
+input:enabled{
+  background: yellow;
+}
+input:disabled{
+ background: black;
+}
+input:focus{
+  background: white;
+}
+input[type=checkbox]:checked{
+  box-shadow:0 0 0 3px hotpink;
+}
+ul li:nth-child(2n){
+  color:yellow;
+}
+ul li:nth-child(2n+1){
+  color:cyan;
+}
+ul li:first-child{
+  color:red;
+  font-weight:bold;
+}
+ul li:last-child{
+  color:blue;
+  font-weight:bold;
+}
+/* 순서 적용 */
+/*
+  :focus, :checked, :enabled, :disabled
+  => 자바스크립트에서 제어
+*/
+
+table tbody tr:nth-child(2n){
+  background: rgb(255,255,220);
+}
+table thead tr:first-child{
+ background: orange;
+}
+table tbody td:nth-child(4n+2){
+  background: green;
+}
+table tbody td:nth-child(4n+3){
+  background: cyan;
+}
+table tbody td:nth-child(4n+4){
+  background: magenta;
+}
+</style>
+</head>
+<body>
+ <h1>:active,:hover</h1>
+ <h3 id="a">HTML/CSS</h3>
+ <h3 id="b">HTML5/CSS3</h3>
+ <h3 id="c">JavaScript ES6.0</h3>
+ <h1>:focus,:enabled,:disabled,:checked</h1>
+ <input type="text" size=30><br>
+ <input type="text" size=30 disabled="disabled"><br>
+ <input type=checkbox value="취미" checked="checked">취미<br>
+ <h1>:first-child,:last-child,:nth-child(n)</h1>
+ <ul>
+ <!-- 
+   nth-child(2n)
+  -->
+   <li>데이터1</li><!-- first-child -->
+   <li>데이터2</li>
+   <li>데이터3</li>
+   <li>데이터4</li>
+   <li>데이터5</li>
+   <li>데이터6</li>
+   <li>데이터7</li><!-- last-child -->
+ </ul>
+ <h1>table에서 처리</h1>
+ <table width=500 border=1 bordercolor=black>
+  <thead>
+   <tr>
+     <th>이름</th>
+     <th>국어</th>
+     <th>영어</th>
+     <th>수학</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr>
+     <td align=center>홍길동</td>
+     <td align=center>90</td>
+     <td align=center>80</td>
+     <td align=center>70</td>
+   </tr>
+   <tr>
+     <td align=center>심청이</td>
+     <td align=center>90</td>
+     <td align=center>80</td>
+     <td align=center>70</td>
+   </tr>
+   <tr>
+     <td align=center>박문수</td>
+     <td align=center>90</td>
+     <td align=center>80</td>
+     <td align=center>70</td>
+   </tr>
+   <tr>
+     <td align=center>이순신</td>
+     <td align=center>90</td>
+     <td align=center>80</td>
+     <td align=center>70</td>
+   </tr>
+   <tr>
+     <td align=center>강감찬</td>
+     <td align=center>90</td>
+     <td align=center>80</td>
+     <td align=center>70</td>
+   </tr>
+  </tbody>
+ </table>
+</body>
+</html>
