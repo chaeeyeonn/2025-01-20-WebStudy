@@ -1,0 +1,127 @@
+<!-- 
+  CSS: 화면 디자인
+     => 사용자 , 라이브러리(bootstrap)
+  => 장점: 재사용 가능, HTML 제작 후 추가 적용 가능
+  => HTML/CSS: 퍼블리셔
+  => JavaScript: Front
+  => 언어/데이터베이스: Back
+  
+  1. CSS => 어떤 태그에 적용
+           ------선택자(selector)
+                 --------------
+                 1. CSS
+                 2. JavaScript
+                 3. Jsoup
+                    select("div.aaa ")
+  2. 선택자의 종류(교재 126~127page)
+  3. CSS 코딩 방법
+     -----------위치 지정, 테두리, 색상처리, 투명모드,...
+     태그{
+       속성:값;
+       속성:값;
+       ---지정되어 있다
+     }
+     선택자{
+     
+     } 
+     선택자
+      전체 선택: * => 기본 사이트 글꼴이 거의 동일
+                    시스템 / 구글 폰트
+      태그 선택자: 태그명{} => h1{속성:값}
+      아이디 선택자: 중복없는 태그 설정
+                  <div id="a">
+                  div#a{
+                  
+                  }
+      클래스 선택자: 중복있는 태그 설정
+                  <div class="a">
+                  div.a{
+                  
+                  }
+      속성 선택자: 선택자[속성=값] => input[type=submit]
+                선택자[속성*=값] => input[type=s]
+                  => 포함관계 => img[src*=jpg|png|gif]
+                선택자[속성^=값] => input[type=submit]
+                  => 시작 => http/https ...
+                선택자[속성$=값] => input[type=submit] 
+                  => 끝 => 확장자 ...
+      후손 선택자: 
+        선택자 선택자
+           div
+            |
+      --------------
+      |     |      |
+      h3   span   div  ***div > span => 2번째 줄 span만 적용
+                   |
+                -------
+                |     |
+               h3    span => 마지막 span 적용
+      자손 선택자: 
+        선택자 > 선택자
+        
+      반응 선택자:
+        선택자:hover
+        선택자:active => 메뉴 선택시
+      
+      상태 선택자:
+        ***선택자:checked => radio / checkbox
+        선택자:enabled / disable
+        
+      동위 선택자:
+        선택자+선택자
+        선택자~선택자
+        
+          div
+           |
+      -----------------
+      |   |    |     | 
+     h1  span span  span  h1+span => h1 바로 옆에 있는 span 선택
+                          h1~span => h1 옆에 있는 모든 span 선택
+     =>
+       <div>
+         <h1></h1>
+         <span></span>
+         <span></span>
+         <span></span>
+      </div>
+      
+      문자 선택자:
+        선택자::after
+        선택자::before
+        
+      구조 선택자:
+        선택자:first-child
+        선택자:last-child
+        선택자:nth-child(수열)
+        
+ 
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+img.poster{
+  /* css 주석 */
+  width:150px;
+  height:180px;
+}
+/* hover: mouseover => a태그에 주 사용*/
+img.poster:hover{
+  opacity:0.3; /* 투명도 => 0.0~1.0*/
+  cursor: pointer
+}
+</style>
+</head>
+<body>
+  <img src="m1.jpg" class="poster">
+  <img src="m2.jpg" class="poster">
+  <img src="m3.jpg" class="poster">
+  <img src="m4.jpg" class="poster">
+  <img src="m5.jpg" class="poster">
+  <img src="m6.jpg" class="poster">
+  <img src="m7.jpg" class="poster">
+  <img src="re_icon.png">
+</body>
+</html>
