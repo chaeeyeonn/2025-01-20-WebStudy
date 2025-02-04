@@ -2,6 +2,7 @@ package com.sist.dao;
 import java.util.*;
 import java.sql.*;
 import com.sist.vo.*;
+
 public class MusicDAO {
 	private Connection conn;
 	private PreparedStatement ps;
@@ -101,5 +102,71 @@ public class MusicDAO {
 			disConnection();
 		}
 		return total;
+	}
+	// 상세보기
+	public MusicVO MusicDetailData(int mno)
+	{
+		MusicVO vo=new MusicVO();
+		try
+		{
+			getConnection();
+			String sql="UPDATE genie_music SET "
+					+ "hit=hit+1 "
+					+ "WHERE mno="+mno;
+			ps=conn.prepareStatement(sql);
+			ps.executeUpdate();
+			/*
+			 * private int mno,cno,idcrement,hit;
+	           private String title,singer,album,poster,state,key;
+			 */
+			sql="SELECT title,singer,album,poster,state "
+				+"FROM genie_music "
+				+"WHERE mno="+mno;
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			vo.setTitle(rs.getString(1));
+			vo.setSinger(rs.getString(2));
+			vo.setAlbum(rs.getString(3));
+			vo.setPoster(rs.getString(4));
+			vo.setState(rs.getString(5));
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return vo;
+	}
+		// 쿠키 데이터
+		public MusicVO musicCookieData(int mno)
+		{
+			MusicVO vo=new MusicVO();
+			try
+			{
+				getConnection();
+				String sql="SELECT mno,title,poster "
+						 +"FROM genie_music "
+						 +"WHERE mno="+mno;
+				ps=conn.prepareStatement(sql);
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				vo.setMno(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setPoster(rs.getString(3));
+				rs.close();
+			}catch(Exception ex)
+			{
+				ex.printStackTrace();
+			}
+			finally
+			{
+				disConnection();
+			}
+			return vo;
+		
 	}
 }

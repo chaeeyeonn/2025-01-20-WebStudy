@@ -50,6 +50,13 @@ public class FoodList extends HttpServlet {
 		out.println("<body>");
 		out.println("<div class=container>");
 		out.println("<div class=row>");
+		out.println("<tr>");
+		out.println("<td>");
+		out.println("<a href=MainServlet class=\"btn btn-xs btn-primary\">메인</a>");
+		out.println("<a href=MusicList class=\"btn btn-xs btn-warning\">음악</a>");
+		out.println("</td>");
+		out.println("</tr>");
+		out.println("<h1>맛집 목록</h1>");
 		/*
 		 *   response는 기능을 한 개만 수행 할 수 있다(두 개 이상 동시 수행 불가)
 		 *   1. 쿠키 전송 => Detail 이동 => HTML 전송
@@ -88,6 +95,32 @@ public class FoodList extends HttpServlet {
 			out.println("<li><a href=\"FoodList?page="+(endPage+1)+"\">&gt;</a></li>");// 다음 블록 / 블록 중 처음 페이지로 이동(이전 endPage+1)
 		}
         out.println("</ul>");
+		out.println("</div>");
+		out.println("<div class=row>");
+		out.println("<h3>최신 방문 맛집</h3>");
+		out.println("<hr>");
+		List<FoodVO> cList=new ArrayList<FoodVO>();
+		Cookie[] cookies=request.getCookies();
+		if(cookies!=null)
+		{
+		  for(int i=cookies.length-1;i>=0;i--)// 최신순을 위해 반대로 진행
+		  {
+			  if(cookies[i].getName().startsWith("food_"))
+			  {
+				  String fno=cookies[i].getValue();
+				  FoodVO vo=dao.foodCookieData(Integer.parseInt(fno));
+				  cList.add(vo);
+			  }
+		  }
+		}
+		for(int i=0;i<cList.size();i++)
+		{
+			FoodVO cvo=cList.get(i);
+			if(i>8) break;
+			out.println("<a href=FoodDetail?fno="+cvo.getFno()+">");
+			out.println("<img src="+cvo.getPoster()+" style=\"width:100px;height:100px\" class=img-rounded title="+"'"+cvo.getName()+"'"+">");
+			out.println("</a>");
+		}
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</body>");

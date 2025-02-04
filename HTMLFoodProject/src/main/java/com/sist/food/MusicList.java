@@ -2,6 +2,7 @@ package com.sist.food;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -37,8 +38,16 @@ public class MusicList extends HttpServlet {
 		out.println("<link rel=stylesheet href=css/food.css>");
 		out.println("</head>");
 		out.println("<body>");
+		
 		out.println("<div class=container>");
 		out.println("<div class=row>");
+		out.println("<tr>");
+		out.println("<td>");
+		out.println("<a href=MainServlet class=\"btn btn-xs btn-primary\">메인</a>");
+		out.println("<a href=FoodList class=\"btn btn-xs btn-success\">맛집</a>");
+		out.println("</td>");
+		out.println("</tr>");
+		out.println("<h1>음악 목록</h1>");
 		
 		for(MusicVO vo:list)
 		{
@@ -73,6 +82,32 @@ public class MusicList extends HttpServlet {
 			out.println("<li><a href=\"MusicList?page="+(endPage+1)+"\">&gt;</a></li>");// 다음 블록 / 블록 중 처음 페이지로 이동(이전 endPage+1)
 		}
         out.println("</ul>");
+		out.println("</div>");
+		out.println("<div class=row>");
+		out.println("<h3>방금 들은 음악</h3>");
+		out.println("<hr>");
+		List<MusicVO> cList=new ArrayList<MusicVO>();
+		Cookie[] cookies=request.getCookies();
+		if(cookies!=null)
+		{
+		  for(int i=cookies.length-1;i>=0;i--)// 최신순을 위해 반대로 진행
+		  {
+			  if(cookies[i].getName().startsWith("music_"))
+			  {
+				  String mno=cookies[i].getValue();
+				  MusicVO vo=dao.musicCookieData(Integer.parseInt(mno));
+				  cList.add(vo);
+			  }
+		  }
+		}
+		for(int i=0;i<cList.size();i++)
+		{
+			MusicVO cvo=cList.get(i);
+			if(i>8) break;
+			out.println("<a href=MusicDetail?mno="+cvo.getMno()+">");
+			out.println("<img src="+cvo.getPoster()+" style=\"width:100px;height:100px\" class=img-rounded title="+"'"+cvo.getTitle()+"'"+">");
+			out.println("</a>");
+		}
 		out.println("</div>");
 		out.println("</div>");
 		out.println("</body>");

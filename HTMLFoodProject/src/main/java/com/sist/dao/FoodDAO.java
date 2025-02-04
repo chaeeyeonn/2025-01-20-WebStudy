@@ -108,6 +108,73 @@ public class FoodDAO {
 		return total;
 	}
 	// 상세보기
-	
+	public FoodVO foodDetailData(int fno)
+	{
+		FoodVO vo=new FoodVO();
+		try
+		{
+			getConnection();
+			String sql="UPDATE food_menupan SET "
+					+ "hit=hit+1 "
+					+ "WHERE fno="+fno;
+			ps=conn.prepareStatement(sql);
+			ps.executeUpdate();
+			sql="SELECT name,type,phone,address,them,poster,images,time,parking,content,price,score,hit "
+					+ "FROM food_menupan "
+					+ "WHERE fno="+fno;
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			vo.setName(rs.getString("name"));// 인덱스 번호로 주어도 됨 => MyBatis는 컬럼 이름으로 함
+			vo.setType(rs.getString("type"));
+			vo.setPhone(rs.getString("phone"));
+			vo.setAddress(rs.getString("address"));
+			vo.setThem(rs.getString("them"));
+			vo.setPoster("https://www.menupan.com"+rs.getString("poster"));
+			vo.setImages(rs.getString("images"));
+			vo.setTime(rs.getString("time"));
+			vo.setParking(rs.getString("parking"));
+			vo.setContent(rs.getString("content"));
+			vo.setPrice(rs.getString("price"));
+			vo.setScore(rs.getDouble("score"));
+			vo.setHit(rs.getInt("hit"));
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return vo;
+	}
+	// 쿠키 데이터
+	public FoodVO foodCookieData(int fno)
+	{
+		FoodVO vo=new FoodVO();
+		try
+		{
+			getConnection();
+			String sql="SELECT fno,name,poster "
+					+ "FROM food_menupan "
+					+ "WHERE fno="+fno;
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			vo.setFno(rs.getInt(1));
+			vo.setName(rs.getString(2));
+			vo.setPoster("https://www.menupan.com"+rs.getString(3));
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return vo;
+	}
 
 }
