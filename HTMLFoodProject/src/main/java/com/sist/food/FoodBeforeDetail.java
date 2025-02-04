@@ -18,5 +18,13 @@ public class FoodBeforeDetail extends HttpServlet {
 		cookie.setPath("/");// 저장 공간
 		cookie.setMaxAge(60*60*24);// 24시간 표기 => 하루동안 저장하겠다
 		response.addCookie(cookie);// 쿠키 전송
+		// 쿠키 => 브라우저에 저장(클라이언트에 저장)
+		// 보안에 취약 / 저장 -> 문자열만 저장 가능
+		// 서버에 저장(세션)
+		// => MAP 방식(키, 값) => 키는 중복 불가능
+		// 상세보기로 이동 -> 서버에서 화면 이동
+		response.sendRedirect("FoodDetail?fno="+fno);
+		//       ------------GET방식
+	
 	}
 }

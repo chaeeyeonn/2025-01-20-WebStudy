@@ -1,0 +1,146 @@
+<!-- 
+   1. CSS 적용 방법
+     - 외부 CSS: 파일 제작 => .css
+               => 모든 파일에 적용, 재사용 가능
+               <link rel="stylesheet" href="파일명|URL">
+     - 내부 CSS: 파일 한 개에 대한 처리
+               <style type="text/css">
+               </style>
+     - 인라인 CSS: 태그 한 개에 대한 처리
+                 <태그명 style="">
+     *** 모든 태그는 id,class,style이 있다
+    
+   2. 선택자(selector)
+    => CSS 적용 / 자바스크립트(태그 제어) / Jsoup 크롤링
+                                    -------------web 크롤링 => 사이트 데이터 수집
+      <style>
+       선택자{
+         속성:값;
+         속성:값;
+         ...
+       }
+      </style>
+      
+      $('선택자').이벤트 처리
+   예) $('#btn').click(function(){
+          버튼 클릭
+       })
+       
+       doc.select("선택자")
+       
+   교재 129page 기본 선택자
+     - * : 전체 태그에 적용 => 글꼴 / margin / padding
+     - id : 중복없는 태그를 적용
+     - class: 죽복 있는 태그(여러 개 동시 처리)
+     - 태그: => 구분자
+     ------------------------------------------------
+     인라인 스타일: 가장 중요
+     |
+     id 스타일
+     |
+     클래스 스타일
+     |
+     태그 스타일: 특정 태그
+     
+     135page 속성 선택자
+     - <input> <select> <textarea>
+      ---------------------------------
+      - 태그[속성명=값] equals
+      - 태그[속성명^=값] startsWith => URL 주소
+      - 태그[속성명$=값] endsWith => 확장자
+      - 태그[속성명*=값] contains ***** => img
+      
+     136page 후손 / 자손 선택자
+       HTML은 DOM(Document Object Model)
+             --------------------------트리형태로 저장
+       <div>
+         <h1></h1>
+         <p></p>
+         <p>
+           <h1></h1>
+         </p>
+       </div>
+       
+         div
+         |
+   ----------------
+   |     |       |
+   h1    p       p => 자손 => div > h1
+                 |
+                 h1 => 후손 => div h1
+         => 형제 선택자(동위 선택자)
+            바로 옆 => h1 + p => 크롤링
+            인접 => h1 ~ p
+            
+     141page 가상 선택자
+       태그:  태그::
+       - :hover => a, img, tr
+       - :checked => checkbox, radio
+         -----------------------------관리자, 마이페이지
+       - :focus => input / button
+       - 같은 태그가 여러 개 구분이 없는 경우(<ul>, <table>, <dl>, ...) => 구조 선택자
+         li:first-child, li:last-child
+         li:nth-child(수열)
+       - ::after, ::before => 문자 선택자(새글, 신상품)
+       --------------------------태그 선택자는 사용자 정의가 없다 : 표준화
+                                ----------디자인(화면 UI), 이벤트 처리, 데이터 수집
+                                
+     126~127page 도표
+     **** Back-End
+     
+     148~154page 단위
+     1. 크기 단위 => 글자 크기
+       font-size => 16px default
+       % => 100%(16px)
+          
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+p:nth-child(1){
+  /*font-size: 16px;*/
+  /*font-size: 100%;*/
+  font-size:1.0em;
+}
+p:nth-child(2){
+  /*font-size: 24px;*/
+  /*font-size: 150%;*/
+  font-size:1.5em;
+}
+p:nth-child(3){
+  /*font-size: 32px;*/
+  /*font-size: 200%;*/
+  font-size:2.0em;
+}
+p:nth-child(4){
+  
+}
+ul li:nth-child(1){
+  color:green;
+}
+ul li:nth-child(2){
+  /* color:rgb(50,130,246); rgba() => 투명모드 */
+  color:rgba(50,130,246,0.3);
+}
+ul li:nth-child(3){
+  color:#3282F6
+}
+</style>
+</head>
+<body>
+ <h1>글자 크기 단위</h1>
+  <p>Hello CSS1</p>
+  <p>Hello CSS2</p>
+  <p>Hello CSS3</p>
+  <p>Hello CSS4</p>
+ <h1>색상 처리</h1>
+  <ul>
+    <li>Hello HTML/CSS 1</li>
+    <li>Hello HTML/CSS 2</li>
+    <li>Hello HTML/CSS 3</li>
+  </ul>
+</body>
+</html>
