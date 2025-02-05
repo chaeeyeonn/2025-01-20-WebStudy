@@ -45,6 +45,7 @@ public class MusicList extends HttpServlet {
 		out.println("<td>");
 		out.println("<a href=MainServlet class=\"btn btn-xs btn-primary\">메인</a>");
 		out.println("<a href=FoodList class=\"btn btn-xs btn-success\">맛집</a>");
+		out.println("<a href=FoodFind class=\"btn btn-xs btn-danger\">맛집검색</a>");
 		out.println("</td>");
 		out.println("</tr>");
 		out.println("<h1>음악 목록</h1>");

@@ -167,6 +167,72 @@ public class MusicDAO {
 				disConnection();
 			}
 			return vo;
-		
+	}
+	// 음악 장르별 검색
+	public List<MusicVO> musicTypeFind(int page,int cno)
+	{
+		List<MusicVO> list=new ArrayList<MusicVO>();
+		try
+		{
+			getConnection();
+			int rowSize=12;
+			int start=(rowSize*page)-(rowSize-1);
+			int end=rowSize*page;
+			String sql="SELECT mno,title,singer,poster,num "
+					+"FROM (SELECT mno,title,singer,poster,rownum as num "
+					+"FROM (SELECT mno,title,singer,poster "
+					+"FROM genie_music "
+					+"WHERE cno=?)) "
+					+"WHERE num BETWEEN ? AND ?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, cno);
+			ps.setInt(2, start);
+			ps.setInt(3, end);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				MusicVO vo=new MusicVO();
+				vo.setMno(rs.getInt(1));
+				vo.setTitle(rs.getNString(2));
+				vo.setSinger(rs.getString(3));
+				vo.setPoster(rs.getString(4));
+				list.add(vo);
+			}
+			rs.close();
+
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return list;
+	}
+	public int musicTypeTotalPage(int cno)
+	{
+		int total=0;
+		try
+		{
+			getConnection();
+			String sql="SELECT CEIL(COUNT(*)/12.0) "
+					  +"FROM genie_music "
+					  +"WHERE cno=?";
+			ps=conn.prepareStatement(sql);
+		    ps.setInt(1, cno);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			total=rs.getInt(1);
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return total;
 	}
 }
