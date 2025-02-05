@@ -39,8 +39,7 @@ public class MusicDetail extends HttpServlet {
 		out.println("<img src="+vo.getPoster()+" style=\"width:270px;height:300px\">"); // 인라인 style
 		out.println("</td>");
 		out.println("<td colspan=2>");
-		out.println("<h3>"+vo.getTitle()+"</h3>");
-		out.println("<h4 style=\"color:orange\">"+vo.getState()+"</h4>");
+		out.println("<h3>"+vo.getTitle()+"&nbsp;<span style=\"color:orange\">"+vo.getState()+"</span></h3>");
 		out.println("</td>");
 		out.println("</tr>");
 		
