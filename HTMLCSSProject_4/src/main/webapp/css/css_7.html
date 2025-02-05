@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="table.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+let i=0;
+$(function(){ //window.onload=function(){}
+	$('.dataTr').click(function(){
+		if(i==0)
+		{
+			i=1;
+			$('#content').show('slow');
+		}
+		else
+		{
+			i=0;
+			$('#content').hide('slow');
+		}
+	})
+})
+</script>
+</head>
+<body>
+  <table class="table_content" width=700>
+    <tr>
+      <th>번호</th>
+      <th>제목</th>
+      <th>이름</th>
+      <th>작성일</th>
+      <th>조회수</th>
+    </tr>
+    <tr class="dataTr">
+      <td class="text-center">1</td>
+      <td>[공식] 믿고보는 서현진, 차기작 정해졌다…'러브 미' 주연확정</td>
+      <td class="text-center">홍길동</td>
+      <td class="text-center">2025-02-05</td>
+      <td class="text-center">10</td>
+    </tr>
+    <tr id="content" style="display:none">
+      <td colspan="5" height="200" class="text-left" valign="top">
+        <pre>[마이데일리 = 이승길 기자] 배우 서현진이 새 드라마 ‘러브 미’로 돌아온다.
+새 드라마 ‘러브 미’는 내 인생만 애틋했던, 조금은 이기적이라 어쩌면 더 평범한 가족이 각자의 사랑을 시작하며 성장하는 이야기를 그린다.
+‘브람스를 좋아하세요’, ‘사랑의 이해’로 감성이 물씬 느껴지는 영상 속에서 섬세한 인물 묘사의 정수를 연출한 조영민 감독,
+그리고 ‘제3의 매력’, ‘아직 최선을 다하지 않았을 뿐’으로 일상에서 마주하는 다양한 감정을 현실적으로 그리며 공감력 최고의 작품을 선보인 박은영, 박희권 작가 콤비가 손을 잡은 작품이다.
+이에 인간의 깊은 내면을 따뜻한 시선으로 바라본 또 한 편의 ‘웰메이드 인생 드라마’의 탄생을 기대케 한다.</pre>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

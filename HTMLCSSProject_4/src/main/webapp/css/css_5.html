@@ -1,13 +1,35 @@
 <!-- 
   가시성
+   display: 화면 출력 => none: 숨김 / '': 보여준다
+    => 더보기 / 무한 스크롤 만들 때 => 자바스크립트
+    
  -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+/* 템플릿의 모든 태그는 block 상태 */
+h1{
+  background-color: yellow;
+  display: inline-block;
+}
+span{
+  background-color: green;
+  width: 250px;
+  height: 100px;
+  display: block;
+  margin-top: 10px;
+}
+</style>
 </head>
 <body>
-
+  <h1>Hello Block</h1>
+  <h1>Hello Block</h1>
+  <h1>Hello Block</h1>
+  <span>Hello Inline</span>
+  <span>Hello Inline</span>
+  <span>Hello Inline</span>
 </body>
 </html>
