@@ -81,19 +81,19 @@ public class FoodList extends HttpServlet {
 		out.println("<ul class=\"pagination\">");
 		if(startPage>1)
 		{
-		  out.println("<li><a href=\"FoodList?page="+(startPage-1)+"\">&lt;</a></li>");// 이전 블록 / 블록 중 마지막 페이지로 이동(이전 startPage-1)
+		  out.println("<li><a href=\"FoodDetail?page="+(startPage-1)+"\">&lt;</a></li>");// 이전 블록 / 블록 중 마지막 페이지로 이동(이전 startPage-1)
 		}
 		
 		for(int i=startPage;i<=endPage;i++)
 		{
 		 if(i==curpage)
-		  out.println("<li class=active><a href=\"FoodList?page="+i+"\">"+i+"</a></li>");// active: 현재 페이지 버튼 색깔 바꾸기
+		  out.println("<li class=active><a href=\"FoodDetail?page="+i+"\">"+i+"</a></li>");// active: 현재 페이지 버튼 색깔 바꾸기
 		 else
-		  out.println("<li><a href=\"FoodList?page="+i+"\">"+i+"</a></li>");
+		  out.println("<li><a href=\"FoodDetail?page="+i+"\">"+i+"</a></li>");
 		}
 		if(endPage<totalpage)
 		{
-			out.println("<li><a href=\"FoodList?page="+(endPage+1)+"\">&gt;</a></li>");// 다음 블록 / 블록 중 처음 페이지로 이동(이전 endPage+1)
+			out.println("<li><a href=\"FoodDetail?page="+(endPage+1)+"\">&gt;</a></li>");// 다음 블록 / 블록 중 처음 페이지로 이동(이전 endPage+1)
 		}
         out.println("</ul>");
 		out.println("</div>");
