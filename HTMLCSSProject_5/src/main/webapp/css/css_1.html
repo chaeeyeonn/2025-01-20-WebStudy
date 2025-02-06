@@ -1,0 +1,151 @@
+<!-- 
+    교재194page~ 위치 속성
+    
+    주요 속성
+    1. 텍스트 속성(184page~)
+       - font-size: 글자 크기(px, em(배수), %)
+       - font-family: 글꼴 => 시스템 / 구글폰트
+       - font-weight: bold => 강조
+       - color: 글자 색상
+              => red, gray... 시스템 색상
+              => rgb(255,255,255)... 그림판 참조
+              => 16진법 => #FFF => 그림판 / HTML 색상표 참조
+              => rgba() => 투명 모드 => a: 0.0.~1.0
+       - <a> => text-decoration:none / underline / overline
+                line-through(취소선)
+       - text-align: 정렬(수평) => <table> => left(default) / center / right 
+       - vertical-align: 정렬(수직) => <div> <table> => top / middle(default) / bottom
+       - white-space: 자동 줄바꿈 => <pre>
+       - line-height: 자간(줄 간격)
+       - word-space: 글자 간격
+       
+    2. background 속성(174page~)
+       - background-color: 배경색
+       - background-image: 배경 이미지
+         => background-image:url("경로명"|url주소)
+         => 크롤링 시 경로명만 가져오기 => style="background-image:url()"
+         => img(80%) / background(20%)
+       - background-repeat: 반복 => 이미지가 작은 경우
+         => no-repeat / repeat(default)
+       - background-size: width/height, cover(축소/확대)
+      -------------------------------------------------=> 통합: background
+      
+    3. 박스 모델
+       - 외부 여백: 브라우저와 태그간의 간격 / 태그와 태그 사이의 간격
+         => margin: margin-top / margin-left / margin-bottom / margin-right
+           => top - right - bottom - left 순(시계방향)
+       - 내부 여백: 태그 속 텍스트, 이미지의 여백
+         => padding: padding-top / padding-left / padding-bottom / padding-right
+           => top - right - bottom - left 순(시계방향)
+       -------------------------------------------------------------------------
+       속기법: top/bottom , left/right 쌍을 이룸
+            padding: 10px == padding: 10px 10px 10px 10px
+            padding: 10px 20px == padding: 10px 20px 10px 20px
+       - 테두리: border
+         => border-width: 두께
+         => border-color: 색상
+         => border-style: 출력 형태 => 선 종류
+                        => solid / dotted / dashed / double
+       -----------------------------------------------------=> 통합: border: 1px solid red
+         => border-radius: 타원 => 왼쪽 위부터 시계 방향
+         => border-collapse: 라인선 통합 <table>
+         
+    4. 가시성 속성
+       - display
+         => 태그 => 브라우저 범위를 벗아나면 자동 줄바꿈
+           : block: System.out.println() => 세로 출력
+            => 태그가 한 줄 전체 차지
+              => <div> / <h1>~<h6> / <p> <br> <ul> <ol> <dl> <table>
+           : inline: System.out.print() => 가로 출력
+            => 지정된 크기만큼만 차지 
+              => <img> <a> <input> <select> <textarea> <span> <b> <i> <strong> ...
+         => display: none 감추기
+         => 속성 변경 => display: block / display: inline / display: inline-block
+                    => 변경 대상에 width/height 설정해놓기
+         => 테이블 사용하지 말라(권장사항)
+           => 웹 접근 표준 => 만약에 사용<caption>
+              테이블의 단점: 자동으로 늘어난다
+              display:table => <table>
+              display:table-row => <tr>
+              display:table-cell => <td>
+              display:table-column => <th>
+              display:table-caption => <caption>
+    5. 목록 속성
+    6. 위치 속성
+    7. 기타
+    8. 화면 분할
+    9. 반응형 웹
+    10. CSS 라이브러리 => BootStrap / TailWind => CSS가 제작
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+/*
+   Front-End
+     Jquery(3) => 발전x
+     React
+     Vue
+     TanStack(React-Query)
+     Next
+     **Jquery(4,5) 등장 / AngularJS
+     => JavaScript => TypeScript
+ 
+ */
+ let bCheck=true;
+ $(function(){
+	 // 이벤트 발생 시 처리 => 서버와 연결되는 것은 아님 , 브라우저 자체
+	 $('input[type="button"]').click(function(){
+		 if(bCheck==true)
+		 {
+			$(this).val("취소")
+			$('#write').show(); // => display:''
+			bCheck=false;
+		 }
+		 else
+		 {
+			 $(this).val("댓글")
+			 $('#write').hide(); 
+			 bCheck=true;
+		 }
+	 })
+	 $('b').click(function(){
+		$('b').hide();
+		$('span').show();
+	 })
+ })
+</script>
+<style type="text/css">
+b:hover{
+  color:green;
+  cursor:pointer;
+}
+</style>
+</head>
+<body>
+  <table border=1 bordercolor=black width=500>
+    <tr>
+      <td>
+        <input type=button value="댓글">
+      </td>
+    </tr>
+    <tr style="display:none" id="write">
+      <td>
+        <textarea rows=5 cols=50></textarea>
+      </td>
+    </tr>
+  </table>
+  <h1>
+  장동건·고소영 사는 그 집…"고급주택보다 1㎡ 작아" 세금중과 피한 비결
+  </h1>
+  <pre>
+  장동건·고소영 부부 등 한 집 건너 유명인들이 사는 서울 강남구 청담동 '더펜트하우스 청담'(PH129)은 서울 대표 호화 주택이다.
+  전용면적 273㎡(복층형)는 138억원에 거래됐어도 '고급주택'이 아닌 일반주택으로 분류된다. 취득세도 일반세율(3%)을 적용해 4억1400만원만 낸다. 취득세가 중과되는 고급주택 면적 기준보다 1㎡ 작아서다.
+  <b>더보기</b>
+  <span style="display:none">반면 서울 근교에 시세 45억원에 연면적 100평(331㎡ 초과) 규모 2층 단독주택은 고급주택에 포함된다. 취득세 중과로 4억9500만원(11%)을 내야 한다.</span>
+  </pre>
+</body>
+</html>
