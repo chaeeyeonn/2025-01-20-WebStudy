@@ -291,4 +291,107 @@ public class MusicDAO {
 		}
 		return vo;
 	}
+	// 음악 검색
+	public List<MusicVO> musicFind(int page,String col,String fd)
+	{
+		List<MusicVO> list=new ArrayList<MusicVO>();
+		try
+		{
+			getConnection();
+			String sql="SELECT mno,title,singer,poster,album,num "
+					  +"FROM (SELECT mno,cno,title,singer,poster,album,rownum as num "
+					  +"FROM (SELECT mno,cno,title,singer,poster,album "
+					  +"FROM genie_music "
+					  + "WHERE "+col+" LIKE '%'||?||'%')) "
+					  + "WHERE num BETWEEN ? AND ?";
+			ps=conn.prepareStatement(sql);
+			int rowSize=20;
+			int start=(rowSize*page)-(rowSize-1);
+			int end=rowSize*page;
+			
+			ps.setString(1, fd);
+			ps.setInt(2, start);
+			ps.setInt(3, end);
+			
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				MusicVO vo=new MusicVO();
+				vo.setMno(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setSinger(rs.getString(3));
+				vo.setPoster(rs.getString(4));
+				vo.setAlbum(rs.getString(5));
+				list.add(vo);
+			}
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return list;
+	}
+	public int musicFindTotalPage(String col,String fd)
+	{
+		int total=0;
+		try
+		{
+			getConnection();
+			String sql="SELECT CEIL(COUNT(*)/20.0) "
+					  +"FROM genie_music "
+					  +"WHERE "+col+" LIKE '%'||?||'%'";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, fd);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			total=rs.getInt(1);
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return total;
+	}
+	// 조회수 top10
+	public List<MusicVO> musicHitTop10()
+	{
+		List<MusicVO> list=new ArrayList<MusicVO>();
+		try
+		{
+			getConnection();
+			String sql="SELECT mno,title,singer,poster,hit,rownum "
+					+ "FROM (SELECT mno,title,singer,poster,hit "
+					+ "FROM genie_music ORDER BY hit DESC) "
+					+ "WHERE rownum<=10";
+			ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				MusicVO vo=new MusicVO();
+				vo.setMno(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setSinger(rs.getString(3));
+				vo.setPoster(rs.getString(4));
+				vo.setHit(rs.getInt(5));
+				list.add(vo);
+			}
+			rs.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			disConnection();
+		}
+		return list;
+	}
 }

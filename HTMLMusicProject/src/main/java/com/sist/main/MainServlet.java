@@ -82,7 +82,7 @@ public class MainServlet extends HttpServlet {
 		String id=(String)session.getAttribute("id");
 		String name=(String)session.getAttribute("name");
 		out.println("<div class=container>");
-		out.println("<div class=\"row \">");
+		out.println("<div class=\"row text-right\">");
 		if(id==null)// 로그인 안 됨
 			//<form> => 데이터를 받는 jsp/servlet => action
 			//<a href="jsp|servlet?id=aaa">
