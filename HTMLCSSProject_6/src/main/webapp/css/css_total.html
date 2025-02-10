@@ -1,7 +1,138 @@
 <!--
 
- ****HYML
-
+    입력관련
+    - <input>
+       ***type="text" : 한 줄 문자열
+       ***type="password" : 비밀번호
+       ***type="radio": 한 개만 선택
+            => name 속성값이 동일
+            => getParameter()
+       ***type="checkbox" : 여러 개 선택 가능
+            => getparameterValues()
+       type="number" : spinner => 숫자 선택
+       ***type="file" : 파일 업로드시에 파일 선택기
+       type="date" : 날짜 출력
+       type="color" : HTML 색상기
+       ***type="button" : 기능은 없음 => 자바스크립트 이용
+       ***type="submit" : 데이터 전송 버튼
+       type="image" : submit
+       ***<button>: submit
+     - <select>: 콤보박스
+           |
+       <option>내용></option>
+     - <textarea>: 멀티라인 => 댓글/글쓰기(내용)
+       ------------rows(height)/cols(width)
+       
+   화면 분할
+     - <div>: 세로 분할 <span>: 가로 분할, 특정부분에 CSS 적용
+     
+     ***
+     block: p, br, div, ul, table, h1~h6, dl, hr
+     inline: b, inpyt, textarea, select, font, span, img, a
+     =========================================================HTML
+     
+     CSS
+      - 선택자: 디자인 할 태그를 선택 
+          => 자바스트립트 처리
+          => 크롤링 (Jsoup)
+          * 전체 선택자: 글꼴 / margin / padding / font-family
+        태그명, 구분자 (id, class)
+        id: 중복이 없는 태그, #id명
+        class: 중복 가능 태그 .class명
+        구분이 없는 태그
+        => 속성선택자: img, a, input
+            태그명[속성=값] : equals
+            태그명[속성*=값] : contains
+            태그명[속성^=값] : startWith
+            태그명[속성$=값] : endsWith
+        => 자손, 후손, 동위선택자
+                div
+          ------------------
+          |   |      |     |
+          p   h1    span  span => 자손 div > p, div > h1
+                           |
+                           h1 => 후손 div p , div h1
+        => 동위선택자: h1+span => h1 바로 옆에 있는 span
+                  : h1~span => 인접한 모든 span 태그 선택
+        => 가상선택자
+           - 상태선택자
+             태그(ID|CLASS): checked => type=radio/checkbox
+             : focus => text / button
+             : enabled => text / button
+             : disabled => text / button
+           - 구조 선택자
+             <ul>/<table>
+             : first-child / last-child / nth-child
+              => 짝수 2n => even
+              => 홀수 2n+1 => odd
+           - 문자 선택자
+             ::before / ::after => 할인 / 혜택
+         ---------------------------------------------------자바스크립트(핵심: 선택자)
+         
+     속성
+     - 택스트 속성
+       font-family : 글꼴 / 시스템, 구글 폰트
+       font-size: 크기(px,em)
+       font-weight: bold
+       color: 글자 색상
+       text-align: 정렬(left|center|right)
+       text-decoration: 라인선(none|underline|overline) => <a> 태그 정리 위해 주로 씀
+       white-space: 줄바꿈
+       word-spacing: 글자 간격
+       line-height: 줄 간격(자간)
+     
+     - ul 태그 관련: list-style:none
+     
+     - background
+       background-image: url('파일명:URL주소')
+                        => 이미지가 작으면 반복
+                        => repeat => no-repeat
+       background-size: width/height(%,px) => 축소 / 확대
+                        cover
+       background-color: 색상 => div / span 주 사용
+       
+     - border
+       border-width: 두께
+       border-style" solid / dotted / dashed / double
+       border-color: 테두리 색상
+       => border: 1px solid red => 순서 상관 없음
+       
+     - display: 가시성
+        none|block|inline|inline-block
+                          -------------대상 태그의 width/height 조절
+                          
+     - margin: 태그간 여백
+       margin-top
+       margin-right
+       margin-bottom
+       margin-left
+        => margin: top right bottom left => 시계방향
+       
+     - padding: 태그 속 여백
+       => margin과 동일
+     
+     - position
+       static: HTML 코딩 순서태고 배치(default)
+       absolute: 절대 좌표 => 브라우저 좌표 이용
+       relative: 상대 좌표 => 지정된 태그의 위치 좌표 기준
+       fixed: 고정 좌표
+       
+     - 기타
+       z-index: 레이어 => 숫자가 높을수록 위로 올라온다
+                퀵메뉴 / 실시간 채팅
+       float: left / right
+          => 해제시에는 반드시 clear:both
+          
+      @media screen and(max-width: 960)
+      {
+         => 해상도 따라서 크기 변경 가능: 반응형 웹
+         => 모바일에서 사용 => 요즘은 flutter(dart)
+         => 최근은 앱에서 만들어 처리
+          => 웹: www
+             앱: m
+      }
+      ==> 대체: bootstrap : width,height 지정하지 않는다
+        
  -->
 <!DOCTYPE html>
 <html>
