@@ -22,7 +22,7 @@ public class ReplyUpdate extends HttpServlet {
 		// 수정 요청
 		dao.replyUpdate(Integer.parseInt(rno), msg);
 		// 화면 이동
-		response.sendRedirect("MainServlet?mode=2&fno="+fno);
+		response.sendRedirect("MainServlet?mode=2&mno="+fno);
 	}
 
 }

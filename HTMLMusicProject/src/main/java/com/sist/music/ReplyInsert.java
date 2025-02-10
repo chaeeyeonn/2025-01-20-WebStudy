@@ -21,7 +21,7 @@ public class ReplyInsert extends HttpServlet {
 		ReplyDAO dao=ReplyDAO.newInstance();
 		dao.replyDelete(Integer.parseInt(rno));
 		
-		response.sendRedirect("MainServlet?mode=2&fno="+fno);
+		response.sendRedirect("MainServlet?mode=2&mno="+fno);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,8 +43,8 @@ public class ReplyInsert extends HttpServlet {
 		ReplyDAO dao=ReplyDAO.newInstance();
 		dao.replyInsert(vo);
 		
-		// 화면 출력 => FoodDetail
-		response.sendRedirect("MainServlet?mode=2&fno="+fno);
+		// 화면 출력 => MusicDetail
+		response.sendRedirect("MainServlet?mode=2&mno="+fno);
 		
 	}
 

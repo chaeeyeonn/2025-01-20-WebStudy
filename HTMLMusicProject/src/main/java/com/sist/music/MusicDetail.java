@@ -102,7 +102,7 @@ public class MusicDetail extends HttpServlet {
 			{
 				// 사용자 속성 정의 가능
 				out.println("<span class=\"btn btn-xs btn-success update\" data-rno="+rvo.getRno()+">수정</span>");
-				out.println("<a href=ReplyInsert?mno="+mno+"&rno="+rvo.getRno()+" class=\"btn btn-xs btn-info\">삭제</a>");
+				out.println("<a href=ReplyInsert?fno="+mno+"&rno="+rvo.getRno()+" class=\"btn btn-xs btn-info\">삭제</a>");
 			}
 			out.println("</td>");
 			out.println("</tr>");
@@ -118,7 +118,7 @@ public class MusicDetail extends HttpServlet {
 			out.println("<form method=post action=ReplyUpdate>");
 			out.println("<textarea rows=4 cols=45 name=msg style=\"float:left\" required>"+rvo.getMsg()+"</textarea>");
 		    out.println("<input type=hidden name=fno value="+mno+">");
-		    out.println("<input type=hidden name=fno value="+rvo.getRno()+">");
+		    out.println("<input type=hidden name=rno value="+rvo.getRno()+">");
 			out.println("<input type=submit value=댓글수정 class=\"btn-primary\" style=\"float:left;width:80px;height:98px\">");
 			out.println("</form>");
 			

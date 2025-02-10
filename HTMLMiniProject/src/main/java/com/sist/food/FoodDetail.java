@@ -176,7 +176,7 @@ public class FoodDetail extends HttpServlet {
 			out.println("<form method=post action=ReplyUpdate>");
 			out.println("<textarea rows=4 cols=58 name=msg style=\"float:left\" required>"+rvo.getMsg()+"</textarea>");
 		    out.println("<input type=hidden name=fno value="+fno+">");
-		    out.println("<input type=hidden name=fno value="+rvo.getRno()+">");
+		    out.println("<input type=hidden name=rno value="+rvo.getRno()+">");
 			out.println("<input type=submit value=댓글수정 class=\"btn-primary\" style=\"float:left;width:80px;height:98px\">");
 			out.println("</form>");
 			

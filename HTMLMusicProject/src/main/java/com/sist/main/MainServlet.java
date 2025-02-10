@@ -76,8 +76,8 @@ public class MainServlet extends HttpServlet {
 		 *    
 		 *    => 값이 없는 경우 => session에 로그인이 안 된 상태 => null
 		 */
-		//session.setAttribute("id", "hong");
-		//session.setAttribute("name", "홍길동"); => 테스트용
+		session.setAttribute("id", "hong");
+		session.setAttribute("name", "홍길동"); //=> 테스트용
 		
 		String id=(String)session.getAttribute("id");
 		String name=(String)session.getAttribute("name");
