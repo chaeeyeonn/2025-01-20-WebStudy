@@ -94,12 +94,6 @@
         => 동적페이지 : JSP/Servlet => 자바가 데이터 관리 
                                     필요시에 데이터 갱신
                      => CGI , ASP , PHP , Django 
-                              ---   ---
-                               |     |
-                               -------
-                               
-                            교보정보통신 (2차) : 서울 시청 
-                               C# + ASP
       22page
       ------
        Servlet / JSP 
