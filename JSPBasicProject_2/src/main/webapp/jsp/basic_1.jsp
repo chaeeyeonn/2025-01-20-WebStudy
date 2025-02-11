@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
     
 <%--
+
+
    교재 69page~ JSP 실행과정
    
                       JSP파일요청
