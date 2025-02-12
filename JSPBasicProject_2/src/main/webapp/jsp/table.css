@@ -7,7 +7,7 @@
 	border-top-color: black;
 	border-bottom-color: black;
 }
-/* 후손 멀티 사용 */
+/* 후손 => 멀티 사용  th/td를 공통으로 적용*/
 .table_content th,.table_content td{
 	margin: 0px;
 	padding: 8px;
@@ -19,13 +19,13 @@
 	border-width: 1px;
 }
 .table_content td{
-	border-bottom-width: 2px;
+	border-bottom-width: 1px;
 	border-bottom-style: dotted;
 	border-bottom-color: #666;
 }
-/* 정렬 */
+/* 정렬*/
 .table_content .text-left{
-	text-align: left;
+	text-align: left
 }
 .table_content .text-center{
 	text-align: center;
@@ -37,3 +37,5 @@
 	cursor: pointer;
 	background-color: #FC68;
 }
+
+
