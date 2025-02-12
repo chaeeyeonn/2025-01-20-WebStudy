@@ -99,8 +99,92 @@ CREATE SEQUENCE jdb_no_seq
 		   }
 		   return list;
 	   }
+	   public int databoardTotalPage()
+	   {
+		   int total=0;
+		   try
+		   {
+			   getConnection();
+			   String sql="SELECT CEIL(COUNT(*)/10.0) "
+			   		     +"FROM jspDataBoard";
+			   ps=conn.prepareStatement(sql);
+			   ResultSet rs=ps.executeQuery();
+			   rs.next();
+			   total=rs.getInt(1);
+			   rs.close();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return total;
+	   }
 	   // 상세보기 => 다운로드 
+	   public DataBoardVO databoardDetail(int no)
+	   {
+		   DataBoardVO vo=new DataBoardVO();
+		   try
+		   {
+			   getConnection();
+			   String sql="UPDATE jspDataBoard SET "
+					     +"hit=hit+1 "
+					     +"WHERE no="+no;
+			   ps=conn.prepareStatement(sql);
+			   ps.executeUpdate();
+			   
+			   sql="SELECT no,name,subject,content,regdate,hit,filename,filesize "
+			   		+ "FROM jspDataBoard "
+			   		+ "WHERE no="+no;
+			   ps=conn.prepareStatement(sql);
+			   ResultSet rs=ps.executeQuery();
+			   rs.next();
+			   vo.setNo(rs.getInt(1));
+			   vo.setName(rs.getString(2));
+			   vo.setSubject(rs.getString(3));
+			   vo.setContent(rs.getString(4));
+			   vo.setRegdate(rs.getDate(5));
+			   vo.setHit(rs.getInt(6));
+			   vo.setFilename(rs.getString(7));
+			   vo.setFilesize(rs.getInt(8));
+			   rs.close();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   }
+		   return vo;
+	   }
 	   // 추가 => 업로드 
+	   public void databoardInsert(DataBoardVO vo)
+	   {
+		   try 
+		   {
+			   getConnection();
+			   String sql="INSERT INTO jspDataBoard VALUES("
+					     +"jdb_no_seq.nextval,?,?,?,?,SYSDATE,0,?,?)";
+			   ps=conn.prepareStatement(sql);
+			   ps.setString(1, vo.getName());
+			   ps.setString(2, vo.getSubject());
+			   ps.setString(3, vo.getContent());
+			   ps.setString(4, vo.getPwd());
+			   ps.setString(5, vo.getFilename());
+			   ps.setInt(6, vo.getFilesize());
+			   ps.executeUpdate();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   disConnection();
+		   } 
+	   }
 	   // 수정 
 	   // 삭제 => 댓글 먼저 삭제 => 게시물 
 }
