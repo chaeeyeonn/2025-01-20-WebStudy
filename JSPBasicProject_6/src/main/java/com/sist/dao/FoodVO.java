@@ -1,26 +1,28 @@
 package com.sist.dao;
 
-
 /*
- FNO                                       NOT NULL NUMBER
- NAME                                      NOT NULL VARCHAR2(500)
- TYPE                                      NOT NULL VARCHAR2(100)
- PHONE                                     NOT NULL VARCHAR2(20)
- ADDRESS                                   NOT NULL VARCHAR2(700)
- SCORE                                              NUMBER(2,1)
- THEM                                      NOT NULL CLOB
- POSTER                                    NOT NULL VARCHAR2(300)
- IMAGES                                             VARCHAR2(4000)
- TIME                                      NOT NULL VARCHAR2(100)
- PARKING                                            VARCHAR2(200)
- CONTENT                                   NOT NULL CLOB
- HIT                                                NUMBER
- PRICE                                              VARCHAR2(30)
+ *   FNO  NOT NULL NUMBER
+ NAME NOT NULL VARCHAR2(500)
+ TYPE NOT NULL VARCHAR2(100)
+ PHONE NOT NULL VARCHAR2(20)
+ ADDRESS NOT NULL VARCHAR2(700)
+ SCORE NUMBER(2,1)
+ them NOT NULL CLOB
+ POSTER NOT NULL VARCHAR2(300)
+ IMAGES  VARCHAR2(4000)
+ TIME   NOT NULL VARCHAR2(100)
+ PARKING  VARCHAR2(200)
+ CONTENT NOT NULL CLOB
+ HIT  NUMBER
+ PRICE  VARCHAR2(30)
  */
+
 public class FoodVO {
-	private int fno,hit;
-	private double score;
-	private String name,type,phone,address,them,poster,images,time,parking,content,price;
+    private int fno,hit;
+    private double score;
+    private String name,type,phone,address,them,poster,
+          images,time,parking,content,price;
+    
 	public int getFno() {
 		return fno;
 	}
@@ -105,5 +107,5 @@ public class FoodVO {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	
+	  
 }
