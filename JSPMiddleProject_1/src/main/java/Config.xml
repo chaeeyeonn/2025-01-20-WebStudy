@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Connection:getConnection/disConnection : 공통사항 -->
+<!-- MyBatis pdf 파일 참고: MyBatis 태그 사용 위함 -->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 태그 순서: 순서 틀릴 시 작동 x
+     대소문자 구분
+     사용자 정의 태그
+     속성은 지정한 것만 사용 가능
+     여는 태그, 닫는 태그 명확하게 일치
+     속성값을 사용할 시 "" 사용
+     루트 태그는 한 개만 사용 가능
+     
+     - properties? : 데이터베이스 정보를 properties에 저장한 경우
+       == ?는 사용할 수도, 사용하지 않을 수도 있다
+       == +는 1번 이상 사용하기
+       == *는 0번 이상 사용하기
+       == |는 선택 사항
+             phone|tel
+       == default는 반드시 1번만 사용
+       
+     - settings?
+     - typeAliases?
+     - typeHandlers? 
+     - objectFactory? 
+     - objectWrapperFactory?
+     - reflectorFactory?
+     - plugins?
+     - environments?
+     - databaseIdProvider?
+     - mappers? 
+ -->
+ <!-- VO 등록 -->
+   <typeAliases>
+     <typeAlias type="com.sist.vo.GoodsVO" alias="GoodsVO"/>
+   </typeAliases>
+ <!-- 오라클 연동: 오라클 정보 필요 -->
+ <environments default="developement">
+   <environment id="developement">
+     <transactionManager type="JDBC"/><!-- commit/rollback -->
+     <dataSource type="POOLED">
+     <!-- 
+         UNPOOLED: JDBC
+         POOLED: DBCP => maxActive(8) maxIdle(8)
+      -->
+      <!-- 환경 설정 -->
+      <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+      <property name="username" value="hr"/>
+      <property name="password" value="happy"/>
+     </dataSource>
+   </environment>
+ </environments>
+ <!-- sql 문장 읽기 -->
+ <mappers>
+   <!-- include -->
+   <mapper resource="com/sist/dao/goods_mapper.xml"/>
+ </mappers>
+</configuration>
