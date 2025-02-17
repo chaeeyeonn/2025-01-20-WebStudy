@@ -7,7 +7,7 @@ package com.sist.dao;
  PHONE NOT NULL VARCHAR2(20)
  ADDRESS NOT NULL VARCHAR2(700)
  SCORE NUMBER(2,1)
- them NOT NULL CLOB
+ THEME NOT NULL CLOB
  POSTER NOT NULL VARCHAR2(300)
  IMAGES  VARCHAR2(4000)
  TIME   NOT NULL VARCHAR2(100)
@@ -20,7 +20,7 @@ package com.sist.dao;
 public class FoodVO {
     private int fno,hit;
     private double score;
-    private String name,type,phone,address,them,poster,
+    private String name,type,phone,address,theme,poster,
           images,time,parking,content,price;
     
 	public int getFno() {
@@ -65,11 +65,11 @@ public class FoodVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getThem() {
-		return them;
+	public String getTheme() {
+		return theme;
 	}
-	public void setThem(String them) {
-		this.them = them;
+	public void setTheme(String theme) {
+		this.theme = theme;
 	}
 	public String getPoster() {
 		return poster;

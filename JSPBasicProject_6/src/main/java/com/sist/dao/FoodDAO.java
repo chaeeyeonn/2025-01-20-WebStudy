@@ -139,20 +139,21 @@ public class FoodDAO {
 		  getConnection();
 		  if(mode==1)
 		  {
-		  String sql="UPDATE food_menupan SET "
+		    String sql="UPDATE food_menupan SET "
 				    +"hit=hit+1 "
 				    +"WHERE fno="+fno;
-		  ps=conn.prepareStatement(sql);
-		  ps.executeUpdate();
+		    ps=conn.prepareStatement(sql);
+		    ps.executeUpdate();
 		  }
+		  
 		  // mainpage => 공동작업 
 		  /*
 		   *   private int fno,hit;
   private double score;
-  private String name,type,phone,address,them,poster,
+  private String name,type,phone,address,theme,poster,
           images,time,parking,content,price;
 		   */
-		  String sql="SELECT name,type,phone,address,them,poster,"
+		  String sql="SELECT fno,name,type,phone,address,theme,poster,"
 		     +"images,time,parking,content,price,score,hit "
 		     +"FROM food_menupan "
 		     +"WHERE fno="+fno;
@@ -160,11 +161,12 @@ public class FoodDAO {
 		  ResultSet rs=ps.executeQuery();
 		  rs.next();
 		  // MyBatis 
+		  vo.setFno(rs.getInt("fno"));
 		  vo.setName(rs.getString("name"));
 		  vo.setType(rs.getString("type"));
 		  vo.setPhone(rs.getString("phone"));
 		  vo.setAddress(rs.getString("address"));
-		  vo.setThem(rs.getString("them"));
+		  vo.setTheme(rs.getString("theme"));
 		  vo.setPoster("https://www.menupan.com"+rs.getString("poster"));
 		  vo.setImages(rs.getString("images"));
 		  vo.setTime(rs.getString("time"));

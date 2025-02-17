@@ -8,6 +8,7 @@
     	strPage="1";
     int curpage=Integer.parseInt(strPage);
     List<FoodVO> list=dao.foodListData(curpage);
+    
     int totalpage=dao.foodTotalPage();
     
     final int BLOCK=10;
@@ -104,7 +105,9 @@ p{
    </div>
    <div class="row">
     <h3>최근 방문 맛집</h3>
+    <a href="cookie_all_delete.jsp" class="btn btn-sm btn-primary">전체삭제</a>
     <hr>
+    
     <%
         List<FoodVO> cList=
               new ArrayList<FoodVO>();
@@ -135,7 +138,7 @@ p{
 		      <a href="#">
 		        <img src="<%=vo.getPoster() %>" style="width:120px;height: 120px">
 		        <div class="caption">
-		          <p><a href="#" class="btn btn-xs btn-success">삭제</a></p>
+		          <p><a href="cookie_delete.jsp?fno=<%=vo.getFno() %>" class="btn btn-xs btn-success">삭제</a></p>
 		        </div>
 		      </a>
 		    </div>
