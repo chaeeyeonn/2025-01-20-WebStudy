@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- PreparedStatement / ResultSet 담당
+     => SQL 문장 저장 장소
+     sql=> 중복 방지 => 재사용
+     select
+     update
+     delete
+     insert
+     ======================동적 쿼리(다중 검색)
+     
+ -->
+<mapper namespace="com.sist.dao.food-mapper">
+<!-- 
+         id: 구분자(중복x), 스프링
+         HasjMap에 첨부
+         map.put("id명","SELECT~")
+         
+         selectList(id명), insert(id명), update(id명), ...
+         
+         = 단점: 각 태그에 한 개의 SQL만 실행 가능
+         => 여러 개 실행: 회원탈퇴
+            <delete id="">
+             begin
+              delete from A
+              delete from B
+              delete from C
+             end
+            </delete>
+ -->
+ <!-- 중복된 sql문장 include 만들어놓기 -->
+  <sql id="where-fno">
+    WHERE fno=#{fno}
+  </sql>
+  <select id="foodListData" resultType="FoodVO">
+    SELECT fno,name,poster,num 
+    FROM (SELECT fno,name,poster,rownum as num 
+    FROM (SELECT fno,name,poster 
+    FROM food_menupan ORDER BY fno ASC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="foodTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/12.0) FROM food_menupan
+  </select>
+  <!-- 
+    private int fno,hit;
+	private double score;
+	private String name,type,phone,address,them,poster,images,time,parking,content,price;
+	
+	여기 있는 변수 => VO
+	없는 변수 => Map에 저장
+   -->
+   <!-- parameterType => 데이터값 -->
+   <update id="hitIncrement" parameterType="int">
+     UPDATE food_menupan SET
+     hit=hit+1
+     <include refid="where-fno"/>
+   </update>
+   <select id="foodDetailData" resultType="FoodVO" parameterType="int">
+     SELECT name,type,phone,address,them,poster,images,time,parking,content,price,score,hit 
+     FROM food_menupan 
+	 <include refid="where-fno"/>
+   </select>
+</mapper>
