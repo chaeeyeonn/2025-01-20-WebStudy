@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <h3>자바 날짜 변환</h3>
+  <h3>자바 날짜 변환</h3> 
   <%
      // TO_CHAR(date,'YYYY-MM-DD')
      Date date=new Date();
@@ -18,7 +18,7 @@
   <%=sdf.format(date) %> 
   <h3>JSTL 날짜 변환</h3>
   <c:set var="today" value="<%=date %>"/>
-  <fmt:formatDate value="${today }" pattern="yyyy-MM-dd"/>
+  <fmt:formatDate value="${today }" pattern="yyyy-MM-dd"/> 
   <h3>자바 숫자 변환</h3>
   <%
      // TO_CHAR(price,'9,999,999')
