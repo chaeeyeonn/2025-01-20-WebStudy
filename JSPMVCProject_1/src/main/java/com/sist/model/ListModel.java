@@ -1,9 +1,10 @@
 package com.sist.model;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.text.*;
 import com.sist.dao.BoardDAO;
 import com.sist.vo.BoardVO;
 
@@ -30,6 +31,9 @@ public class ListModel implements Model{
 		request.setAttribute("list", list);
 		request.setAttribute("curpage", curpage);
 		request.setAttribute("totalpage", totalpage);
+		
+		String today=new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		request.setAttribute("today", today);
 		
 		return "board/list.jsp";
 	}

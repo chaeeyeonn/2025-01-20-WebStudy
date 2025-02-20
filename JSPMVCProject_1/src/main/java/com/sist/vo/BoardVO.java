@@ -4,8 +4,14 @@ import java.util.*;
 
 public class BoardVO {
    private int no,hit;
-   private String name,subject,content,pwd;
-   private Date regdate;
+   private String name,subject,content,pwd,dbday;
+   public String getDbday() {
+	return dbday;
+}
+public void setDbday(String dbday) {
+	this.dbday = dbday;
+}
+private Date regdate;
 public int getNo() {
 	return no;
 }
