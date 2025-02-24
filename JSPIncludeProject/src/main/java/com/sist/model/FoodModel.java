@@ -42,45 +42,61 @@ public class FoodModel {
 	   request.setAttribute("main_jsp", "../food/list.jsp");
 	   return "../main/main.jsp";
    }
+   /*
+    *   class A
+    *   {
+    *      String name;
+    *   }
+    *   
+    *   A a=new A();
+    *   a.name
+    */
    @RequestMapping("food/detail_before.do")
-   public String food_detail_before(HttpServletRequest request, HttpServletResponse response)
+   public String food_detail_before(HttpServletRequest request,
+		   HttpServletResponse response)
    {
 	   String fno=request.getParameter("fno");
-	   // 쿠키 저장
-	   // 1. 쿠키 생성
+	   // 쿠키저장 
+	   // 1. Cookie생성 
 	   Cookie cookie=new Cookie("food_"+fno, fno);
-	   // 2. path 설정
+	   // 2. Path 설정 
 	   cookie.setPath("/");
-	   // 3. 저장 기간
+	   // 3. 저장 기간 
 	   cookie.setMaxAge(60*60*24);
-	   // 4. 브라우저로 전송
+	   // 4. 브라우저로 전송 
 	   response.addCookie(cookie);
-	   // 상세보기
+	   // 상세보기 
 	   return "redirect:../food/detail.do?fno="+fno;
    }
+   
    @RequestMapping("food/detail.do")
-   public String food_detail(HttpServletRequest request, HttpServletResponse response)
+   public String food_detail(HttpServletRequest request,
+		   HttpServletResponse response)
    {
-	   String fno=request.getParameter("fno"); 
-	   FoodVO vo=FoodDAO.foodDatailData(Integer.parseInt(fno));
-	   // 경기 포천시 내촌면 내리 267
+	   String fno=request.getParameter("fno");
+	   FoodVO vo=FoodDAO.foodDetailData(Integer.parseInt(fno));
+	   // 강원
 	   String addr1=vo.getAddress().trim();
 	   /*addr1=addr1.trim().substring(addr1.indexOf(" "));
+	   // 양양군 
 	   String addr2=addr1.trim().substring(addr1.indexOf(" "));
-	   String addr3=addr2.trim().substring(0,addr2.indexOf(" "));*/
-	   
+	   //  연창리 180-108
+	   String addr3=addr2.trim().substring(0,addr2.indexOf(" "));
+	   // 양양읍
+	   System.out.println(addr3.trim());*/
+	   // 제주 서귀포시 표선면 표선리 45 금데기횟집
 	   StringTokenizer st=new StringTokenizer(addr1);
 	   String s1=st.nextToken();
 	   String s2=st.nextToken();
-	   String addr3=st.nextToken();
-	   System.out.println(addr3.trim());
-	   // 내촌면
+	   String addr3=st.nextToken();		   
 	   request.setAttribute("addr", addr3.trim());
 	   request.setAttribute("vo", vo);
 	   
+	   // include 
 	   request.setAttribute("main_jsp", "../food/detail.jsp");
 	   return "../main/main.jsp";
 	   
    }
+   
    
 }

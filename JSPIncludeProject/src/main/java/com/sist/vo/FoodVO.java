@@ -18,7 +18,7 @@ package com.sist.vo;
 public class FoodVO {
     private int fno,hit;
     private double score;
-    private String name,type,phone,address,them,poster,
+    private String name,type,phone,address,theme,poster,
            images,time,parking,content,price;
 	public int getFno() {
 		return fno;
@@ -62,11 +62,11 @@ public class FoodVO {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getThem() {
-		return them;
+	public String getTheme() {
+		return theme;
 	}
-	public void setThem(String them) {
-		this.them = them;
+	public void setTheme(String theme) {
+		this.theme = theme;
 	}
 	public String getPoster() {
 		return poster;

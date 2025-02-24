@@ -45,9 +45,10 @@
     hit=hit+1
     WHERE fno=#{fno}
   </update>
-  <select id="foodDatailData" resultType="FoodVO" parameterType="int">
-    SELECT * FROM food_menupan
-    WHERE fno=#{fno}
+  <select id="foodDetailData" resultType="FoodVO"
+  parameterType="int">
+   SELECT * FROM food_menupan
+   WHERE fno=#{fno}
   </select>
 </mapper>
 

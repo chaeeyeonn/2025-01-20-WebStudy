@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%> 
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,14 +34,19 @@
       </div>
       <nav class="pagination">
         <ul>
+        <%-- startPage : 1 11 21... --%>
          <c:if test="${startPage>1 }">
           <li><a href="../food/list.do?page=${startPage-1 }">&laquo; Previous</a></li>
          </c:if>
          
          <c:forEach var="i" begin="${startPage }" end="${endPage }">
           <li ${curpage==i?"class=current":"" }><a href="../food/list.do?page=${i }">${i }</a></li>
+         
          </c:forEach>
          
+         <%--
+              endPage : 10 20 30
+          --%>
          <c:if test="${endPage<totalpage }">
           <li><a href="../food/list.do?page=${endPage+1 }">Next &raquo;</a></li>
          </c:if>
