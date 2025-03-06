@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.food-mapper">
+  <!--  main : main 맛집 -->
+  <select id="foodMainHouseData" resultType="FoodVO">
+    SELECT * FROM (SELECT * FROM project_food 
+      ORDER BY DBMS_RANDOM.RANDOM
+    )
+    WHERE rownum&lt;=1
+  </select>
+  <select id="foodMainHouseData8" resultType="FoodVO">
+    SELECT * FROM (SELECT * FROM project_food 
+      ORDER BY DBMS_RANDOM.RANDOM
+    )
+    WHERE rownum&lt;=8
+  </select>
+  <!-- 맛집 목록 -->
+  <select id="foodListData" resultType="FoodVO" parameterType="hashmap">
+   SELECT fno,name,poster,score,type,content,them,phone,address,num
+   FROM (SELECT fno,name,poster,score,type,content,them,phone,address,rownum as num 
+   FROM (SELECT /*+ INDEX_ASC(project_food pf_fno_pk)*/fno,name,poster,score,type,content,them,phone,address
+   FROM project_food))
+   WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="foodTotalPage" resultType="int">
+   SELECT CEIL(COUNT(*)/12.0) FROM project_food
+  </select>
+  <select id="foodDetailData" resultType="FoodVO" parameterType="int">
+    SELECT * FROM project_food
+    WHERE fno=#{fno}
+  </select>
+  <update id="foodHitIncrement" parameterType="int">
+    UPDATE project_food SET
+    hit=hit+1
+    WHERE fno=#{fno}
+  </update>
+</mapper>
