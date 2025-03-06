@@ -37,7 +37,7 @@ public class FoodDAO {
   
   public static List<FoodVO> foodMainHouseData8()
   {
-	  SqlSession session=ssf.openSession();
+	  SqlSession session=ssf.openSession(); 
 	  List<FoodVO> list=session.selectList("foodMainHouseData8");
 	  session.close();
 	  return list;
