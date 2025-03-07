@@ -16,9 +16,9 @@
   </select>
   <!-- 맛집 목록 -->
   <select id="foodListData" resultType="FoodVO" parameterType="hashmap">
-   SELECT fno,name,poster,score,type,content,them,phone,address,num
-   FROM (SELECT fno,name,poster,score,type,content,them,phone,address,rownum as num 
-   FROM (SELECT /*+ INDEX_ASC(project_food pf_fno_pk)*/fno,name,poster,score,type,content,them,phone,address
+   SELECT fno,name,poster,score,type,content,them,phone,address,likecount,replycount,num
+   FROM (SELECT fno,name,poster,score,type,content,them,phone,address,likecount,replycount,rownum as num 
+   FROM (SELECT /*+ INDEX_ASC(project_food pf_fno_pk)*/fno,name,poster,score,type,content,them,phone,address,likecount,replycount,
    FROM project_food))
    WHERE num BETWEEN #{start} AND #{end}
   </select>
@@ -34,4 +34,16 @@
     hit=hit+1
     WHERE fno=#{fno}
   </update>
+  <!-- 맛집 검색 -->
+  <select id="foodFindData" resultType="FoodVO" parameterType="hashmap">
+   SELECT fno,name,poster,score,type,content,them,phone,address,num
+   FROM (SELECT fno,name,poster,score,type,content,them,phone,address,rownum as num 
+   FROM (SELECT /*+ INDEX_ASC(project_food pf_fno_pk)*/fno,name,poster,score,type,content,them,phone,address
+   FROM project_food WHERE ${fd} LIKE '%'||#{ss}||'%'))
+   WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="foodFindTotalPage" resultType="int" parameterType="hashmap">
+   SELECT CEIL(COUNT(*)/12.0) FROM project_food
+   WHERE ${fd} LIKE '%'||#{ss}||'%'
+  </select>
 </mapper>
