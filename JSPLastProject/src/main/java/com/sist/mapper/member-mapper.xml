@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.member-mapper">
+  <select id="memberIdcheck" resultType="int" parameterType="string">
+    SELECT COUNT(*) FROM project_member
+    WHERE id=#{id}
+  </select>
+  <insert id="memberInsert" parameterType="MemberVO">
+    INSERT INTO project_member VALUES(
+     #{id},#{pwd},#{name},#{sex},#{birthday},#{email},#{post},#{addr1},#{addr2},#{phone},#{content},'n'
+    )
+  </insert>
+  <!-- 로그인 -->
+  <select id="idCheckCount" resultType="int" parameterType="string">
+   SELECT COUNT(*) FROM project_member
+   WHERE id=#{id}
+  </select>
+  <select id="memberGetPassword" resultType="MemberVO" parameterType="string">
+   SELECT id,pwd,name,sex,admin
+   FROM project_member
+   WHERE id=#{id}
+  </select>
+</mapper>
