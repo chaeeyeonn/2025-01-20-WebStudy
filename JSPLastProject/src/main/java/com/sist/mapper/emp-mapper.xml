@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.mapper.emp-mapper">
+  <select id="empGetEnameData" resultType="EmpVO">
+   SELECT empno,ename
+   FROM emp
+  </select>
+  <!-- 
+  		<trim>
+  		  prefix => 앞에 추가
+  		  suffix => 뒤에 추가
+  		  suffixOverrides => 뒤 제거
+  		  prefixOverrides => 앞 제거
+   -->
+  <select id="empFindData" resultType="EmpVO" parameterType="hashmap">
+   SELECT empno,ename,job,sal,TO_CHAR(hiredate,'YYYY-MM-DD') as dbday
+   FROM emp
+   <trim prefix="WHERE empno IN(" suffix=")" suffixOverrides="("></trim>
+    <foreach collection="empnos" item="empno" close=")" separator=",">#{empno}</foreach>
+  </select>
+</mapper>
