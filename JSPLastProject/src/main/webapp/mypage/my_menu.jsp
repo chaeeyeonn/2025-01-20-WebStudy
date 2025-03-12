@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
- <div class="panel panel-info">
+<div class="panel panel-info">
    <div class="panel-heading">
      <h3 class="panel-title">개인정보</h3>
    </div>
@@ -17,7 +17,7 @@
     <li class="list-group-item"><a href="#">비밀번호변경</a></li>
    </ul>
  </div>
-  <div class="panel panel-warning">
+ <div class="panel panel-warning">
    <div class="panel-heading">
      <h3 class="panel-title">관리정보</h3>
    </div>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%> 
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <c:choose>
  <c:when test="${mode==1 }">
   <c:set var="title" value="명소"/>
@@ -61,9 +61,7 @@
                     <div class="single-post wow fadeInUp" data-wow-delay="0.1s">
                         <!-- Post Thumb -->
                         <div class="post-thumb">
-                         <a href="../seoul/seoul_detail_before.do?no=${vo.no}">
                             <img src="${vo.poster }" style="width:350px;height: 250px ">
-                            </a>
                         </div>
                         <!-- Post Content -->
                         <div class="post-content">

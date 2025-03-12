@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%> 
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title> 
+<title>Insert title here</title>
 </head>
 <body>
 <!-- ****** Welcome Area End ****** -->
@@ -18,7 +18,7 @@
                     <div class="single_catagory wow fadeInUp" data-wow-delay=".3s">
                         <img src="../img/catagory-img/1.jpg" alt="">
                         <div class="catagory-title">
-                            <a href="#">
+                            <a href="../food/food_list.do">
                                 <h5>Food</h5>
                             </a>
                         </div>
@@ -28,7 +28,7 @@
                     <div class="single_catagory wow fadeInUp" data-wow-delay=".6s">
                         <img src="../img/catagory-img/2.jpg" alt="">
                         <div class="catagory-title">
-                            <a href="#">
+                            <a href="../recipe/recipe_list.do">
                                 <h5>Recipe</h5>
                             </a>
                         </div>
@@ -38,7 +38,7 @@
                     <div class="single_catagory wow fadeInUp" data-wow-delay=".9s">
                         <img src="../img/catagory-img/3.jpg" alt="">
                         <div class="catagory-title">
-                            <a href="#">
+                            <a href="../seoul/seoul_list.do?mode=1">
                                 <h5>Travel</h5>
                             </a>
                         </div>
@@ -215,26 +215,29 @@
                                 <img src="${cvo.poster }" alt="">
                             </div>
                             <h4 class="font-shadow-into-light">${cvo.chef}</h4>
+                            
                         </div>
 
                         
                         <!-- Single Widget Area -->
-                        <c:forEach var="rvo" items="${rList}">
                         <div class="single-widget-area popular-post-widget">
                             <div class="widget-title text-center">
                                 <h6>인기 레시피</h6>
                             </div>
                             <!-- Single Popular Post -->
-                            <div class="single-populer-post d-flex">
-                                <img src="${rvo.poster }" alt="">
-                                <div class="post-content">
-                                    <a href="#">
-                                        <h6>${rvo.title }</h6>
-                                    </a>
-                                    <p>${rvo.chef}</p>
-                                </div>
-                            </div>
-                             </c:forEach>
+                            <c:forEach var="rvo" items="${rList }">
+	                            <div class="single-populer-post d-flex">
+	                                <img src="${rvo.poster }" alt="">
+	                                <div class="post-content">
+	                                    <a href="#">
+	                                        <h6>${rvo.title }</h6>
+	                                    </a>
+	                                    <p>${rvo.chef }</p>
+	                                </div>
+	                            </div>
+                            </c:forEach>
+                  
+                         </div>
 
                         <!-- Single Widget Area -->
                         <div class="single-widget-area add-widget text-center">
@@ -243,9 +246,8 @@
                                 <div class="add-text">
                                     <div class="yummy-table">
                                         <div class="yummy-table-cell">
-                                            <h2>타겟 광고</h2>
-                                            <p>Buy Book Online Now!</p>
-                                            <a href="#" class="add-btn">Buy Now</a>
+                                            
+                                            <iframe src="http://www.youtube.com/embed/MuYcCAUdjBE\u0026pp=QAFIAQ%3D%3D" style="width:100%"></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -257,6 +259,7 @@
                             <div class="widget-title text-center">
                                 <h6>오늘의 뉴스</h6>
                             </div>
+                            
                             <div class="newsletter-form">
                                 <form action="#" method="post">
                                     <input type="email" name="newsletter-email" id="email" placeholder="검색어 입력">

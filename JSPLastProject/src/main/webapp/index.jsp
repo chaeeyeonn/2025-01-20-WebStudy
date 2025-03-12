@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 
+    pageEncoding="UTF-8"%>
 <%--
-		동적쿼리
-		- 프로시저: all_reply, all_like, all_jjim
-		- 트리거: like, reply
-		==========================================
-		이중 include
-		
+      동적쿼리 
+      프로시저 / 트리거 
+                | like / reply
+        | all_reply , all_like , all_jjim    
+      ==================================== 
+      2중 include
  --%>
 <!DOCTYPE html>
 <html>
@@ -21,4 +21,3 @@ location.href="main/main.do"
   
 </body>
 </html>
-

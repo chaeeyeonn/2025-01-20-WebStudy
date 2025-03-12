@@ -59,16 +59,16 @@
                      </tr>
                      <tr>
                        <td class="text-center">
-                        <img src="../recipe/m1.png">&nbsp;${vo.mem_cont1 }
+                        <img src="../recipe/icon/m1.png">&nbsp;${vo.mem_cont1 }
                        </td>
                        <td class="text-center">
-                        <img src="../recipe/m2.png">&nbsp;${vo.mem_cont3 }
+                        <img src="../recipe/icon/m2.png">&nbsp;${vo.mem_cont3 }
                        </td>
                        <td class="text-center">
-                        <img src="../recipe/m3.png">&nbsp;${vo.mem_cont7 }
+                        <img src="../recipe/icon/m3.png">&nbsp;${vo.mem_cont7 }
                        </td>
                        <td class="text-center">
-                        <img src="../recipe/m4.png">&nbsp;${vo.mem_cont2 }
+                        <img src="../recipe/icon/m4.png">&nbsp;${vo.mem_cont2 }
                        </td>
                      </tr>
                     </table>

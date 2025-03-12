@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
 <body>
   <ul>
     <c:forEach var="vo" items="${list }">
-      <li>${vo.ename }-${vo.job}-${vo.dbday }-${vo.sal }</li>
+      <li>${vo.ename }-${vo.job }-${vo.dbday }-${vo.sal }</li>
     </c:forEach>
   </ul>
 </body>

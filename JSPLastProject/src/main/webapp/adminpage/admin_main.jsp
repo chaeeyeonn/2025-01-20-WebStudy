@@ -40,13 +40,13 @@
         <div class="container">
             <div class="row">
              <div class="col-sm-2">
-              <jsp:include page="admin_menu.jsp"></jsp:include>
+               <jsp:include page="admin_menu.jsp"></jsp:include>
              </div>
              <div class="col-sm-10">
-              <jsp:include page="${admin_jsp}"></jsp:include>
+               <jsp:include page="${admin_jsp }"></jsp:include>
              </div>
             </div>
-            </div>
-            </section>
+         </div>
+    </section>
 </body>
 </html>

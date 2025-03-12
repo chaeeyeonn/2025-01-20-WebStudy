@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%> 
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="../food/map.css">
+<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=72fa81817487692b6dc093004af97650&libraries=services"></script>
 </head>
 <body>
 <!-- ****** Breadcumb Area Start ****** -->
@@ -65,40 +66,44 @@
                             </div>
                       <table class="table">
        <tr>
-         <td width=30% class="text-center" rowspan="8">
-           <img src="https://www.menupan.com${vo.poster }" style="width: 100%">
+         <td width=50% class="text-center" rowspan="8">
+          <div class="post-thumb">
+           <img src="https://www.menupan.com${vo.poster }" style="width: 450px;height: 400px"
+           class="img-rounded"
+           >
+          </div>
          </td>
          <td colspan="2">
            <h3>${vo.name }&nbsp;<span style="color: orange;">${vo.score }</span></h3>
          </td>
        </tr>
        <tr>
-         <th width=20%>음식종류</th>
-         <td width=50%>${vo.type }</td>
+         <th width=15%>음식종류</th>
+         <td width=35%>${vo.type }</td>
        </tr>
        <tr>
-         <th width=20%>주소</th>
-         <td width=50%>${vo.address }</td>
+         <th width=15%>주소</th>
+         <td width=35%>${vo.address }</td>
        </tr>
        <tr>
-         <th width=20%>전화</th>
-         <td width=50%>${vo.phone }</td>
+         <th width=15%>전화</th>
+         <td width=35%>${vo.phone }</td>
        </tr>
        <tr>
-         <th width=20%>가격대</th>
-         <td width=50%>${vo.price }</td>
+         <th width=15%>가격대</th>
+         <td width=35%>${vo.price }</td>
        </tr>
        <tr>
-         <th width=20%>주차</th>
-         <td width=50%>${vo.parking }</td>
+         <th width=15%>주차</th>
+         <td width=35%>${vo.parking }</td>
        </tr>
        <tr>
-         <th width=20%>영업시간</th>
-         <td width=50%>${vo.time }</td>
+         <th width=15%>영업시간</th>
+         <td width=35%>${vo.time }</td>
        </tr>
        <tr>
-         <th width=20%>테마</th>
-         <td width=50%>${vo.theme }</td>
+         <th width=15%>테마</th>
+         <td width=35%>${vo.theme }</td>
        </tr>
       </table>
       <table class="table">
@@ -107,7 +112,7 @@
         </tr>
         <tr>
          <td class="text-right">
-         <c:if test="${sessionScope.id!=null }">
+          <c:if test="${sessionScope.id!=null }">
           <a href="#" 
              class="btn btn-sm btn-success">좋아요</a>
           <a href="#" 
@@ -115,13 +120,14 @@
           <a href="#" 
              class="btn btn-sm btn-danger">예약하기</a>
           </c:if>
-          <a href="../food/list.do" 
+          <a href="javascript:history.back()" 
              class="btn btn-sm btn-primary">목록</a>
          </td>
         </tr>
       </table>  
                             
-<div class="map_wrap">
+      <%-- 지도 위치 --%>
+      <div class="map_wrap">
 			    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 			
 			    <div id="menu_wrap" class="bg_white">
@@ -139,7 +145,7 @@
 			    </div>
 			</div>
 			
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72fa81817487692b6dc093004af97650&libraries=services"></script>
+			
 			<script>
 			// 마커를 담을 배열입니다
 			var markers = [];

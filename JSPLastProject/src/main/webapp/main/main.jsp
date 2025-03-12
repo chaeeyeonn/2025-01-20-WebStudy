@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 
@@ -22,7 +22,7 @@
 
     <!-- Responsive CSS -->
     <link href="../css/responsive/responsive.css" rel="stylesheet">
-
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=72fa81817487692b6dc093004af97650&libraries=services"></script>
 </head>
 
 <body>
@@ -46,8 +46,9 @@
     
     <!-- ****** Cookie ****** -->
     <div class="instargram_area owl-carousel section_padding_100_0 clearfix" id="portfolio">
+
         <!-- Instagram Item -->
-        <c:forEach var="cook" items="${cList }">
+       <c:forEach var="cook" items="${cList }">
         <div class="instagram_gallery_item">
             <!-- Instagram Thumb -->
             <img src="https://www.menupan.com${cook.poster }" alt="">
@@ -61,8 +62,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-		</c:forEach>
+         </div>
+        </c:forEach>
     </div>
     <!-- ****** Our Creative Portfolio Area End ****** -->
 

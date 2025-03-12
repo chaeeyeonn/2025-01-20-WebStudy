@@ -31,12 +31,14 @@ public class MainModel {
 	  Cookie[] cookies=request.getCookies();
 	  if(cookies!=null)
 	  {
+		  // Cookie cookie=new Cookie("food_"+fno, fno);
 		  for(int i=cookies.length-1;i>=0;i--)
 		  {
 			  if(cookies[i].getName().startsWith("food_"))
 			  {
 				  String fno=cookies[i].getValue();
 				  FoodVO fvo=FoodDAO.foodCookieData(Integer.parseInt(fno));
+				  // where fno=1
 				  cList.add(fvo);
 			  }
 		  }
@@ -46,6 +48,7 @@ public class MainModel {
 	  // request / session 
 	  request.setAttribute("main_jsp", "../main/home.jsp");
 	  // 화면 변경
+	  // include => 파일에서 request를 공유할 수 있다 
 	  return "../main/main.jsp";
   }
 }
