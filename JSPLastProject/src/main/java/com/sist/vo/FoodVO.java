@@ -9,7 +9,7 @@ TYPE       NOT NULL VARCHAR2(100)
 PHONE      NOT NULL VARCHAR2(20)   
 ADDRESS    NOT NULL VARCHAR2(700)  
 SCORE               NUMBER(2,1)    
-THEME      NOT NULL CLOB           
+THEM      NOT NULL CLOB           
 POSTER     NOT NULL VARCHAR2(300)  
 IMAGES              VARCHAR2(4000) 
 TIME       NOT NULL VARCHAR2(100)  
@@ -25,7 +25,7 @@ REPLYCOUNT          NUMBER
 public class FoodVO {
    private int fno,hit,jjimcount,likecount,replycount;
    private double score;
-   private String name,type,phone,address,theme,
+   private String name,type,phone,address,them,
            poster,images,time,parking,content,price;
    
 }

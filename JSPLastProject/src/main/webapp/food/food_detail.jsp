@@ -103,7 +103,7 @@
        </tr>
        <tr>
          <th width=15%>테마</th>
-         <td width=35%>${vo.theme }</td>
+         <td width=35%>${vo.them }</td>
        </tr>
       </table>
       <table class="table">

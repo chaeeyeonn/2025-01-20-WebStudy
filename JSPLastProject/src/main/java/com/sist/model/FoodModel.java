@@ -129,7 +129,7 @@ public class FoodModel {
 	  // JSON변경 
 	  JSONArray arr=new JSONArray();
 	  int i=0;
-	  // fno,name,poster,score,type,content,theme,phone,address
+	  // fno,name,poster,score,type,content,them,phone,address
 	  for(FoodVO vo:list)
 	  {
 		  JSONObject obj=new JSONObject();
@@ -139,7 +139,7 @@ public class FoodModel {
 		  obj.put("score", vo.getScore());
 		  obj.put("type", vo.getType());
 		  obj.put("content", vo.getContent());
-		  obj.put("theme", vo.getTheme());
+		  obj.put("them", vo.getThem());
 		  obj.put("phone", vo.getPhone());
 		  obj.put("address", vo.getAddress());
 		  obj.put("likecount", vo.getLikecount());

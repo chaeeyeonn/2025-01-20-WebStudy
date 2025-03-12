@@ -193,7 +193,7 @@
                                     <a href="#">
                                         <h4 class="post-headline">${vo.name }</h4>
                                     </a>
-                                    <p>${vo.theme }</p>
+                                    <p>${vo.them }</p>
                                     <a href="#" class="read-more">Continue Reading..</a>
                                 </div>
                             </div>

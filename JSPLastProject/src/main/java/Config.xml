@@ -18,7 +18,7 @@
      <typeAlias type="com.sist.vo.MemberVO" alias="MemberVO"/>
      <typeAlias type="com.sist.vo.EmpVO" alias="EmpVO"/>
      <typeAlias type="com.sist.vo.BoardVO" alias="BoardVO"/>
-     <typeAlias type="com.sist.vo.NoticeVO" alias="NoticeVO"/>
+     <typeAlias type="com.sist.vo.NoticeVO" alias="NoticeVO"/> 
    </typeAliases>
    <environments default="development">
      <environment id="development">
