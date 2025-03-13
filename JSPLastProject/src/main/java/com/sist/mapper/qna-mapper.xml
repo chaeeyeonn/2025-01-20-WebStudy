@@ -31,6 +31,30 @@
       #{id},#{name},#{subject},#{content},#{pwd},
       (SELECT NVL(MAX(group_id)+1,1) FROM qnaBoard))
    </insert>
+   <update id="qnaHitIncrement" parameterType="int">
+     UPDATE qnaBoard SET
+     hit=hit+1
+     WHERE no=#{no}
+   </update>
+   <!-- 삭제 -->
+   <delete id="qnaDelete" parameterType="int">
+     DELETE FROM qnaBoard
+     WHERE group_id=#{group_id}
+   </delete>
+   <update id="qnaAdminAnDelete" parameterType="int">
+     UPDATE qnaBoard SET 
+     anok='n'
+     WHERE group_id=#{group_id}
+   </update>
+   <delete id="qnaAdminDelete" parameterType="int">
+     DELETE FROM qnaBoard
+     WHERE group_id=#{group_id} AND group_step=1
+   </delete>
+   <select id="qnaDetailData" resultType="QnABoardVO" parameterType="int">
+     SELECT no,name,id,subject,content,hit,group_id,TO_CHAR(regdate,'YYYY-MM-DD') as dbday
+     FROM qnaBoard
+     WHERE no=#{no}
+   </select>
    <!-- 관리자 -->
    <select id="qnaAdminListData" resultType="QnABoardVO" parameterType="hashmap">
      SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday,hit,group_tab,group_id,group_step,anok,num

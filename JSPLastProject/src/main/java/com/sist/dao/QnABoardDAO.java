@@ -120,4 +120,54 @@ public class QnABoardDAO {
 				session.close();
 		}
 	}
+	/*
+	 * <update id="qnaHitIncrement" parameterType="int">
+     UPDATE qnaBoard SET
+     hit=hit+1
+     WHERE no=#{no}
+   </update>
+   
+   <select id="qnaDetailData" resultType="QnABoardVO" parameterType="int">
+     SELECT no,name,subject,content,hit,TO_CHAR(regdate,'YYYY-MM-DD') as dbday
+     FROM qnaBoard
+     WHERE no=#{no}
+	 */
+	public static QnABoardVO qnaDetailData(int no)
+	{
+		SqlSession session=ssf.openSession();
+		session.update("qnaHitIncrement",no);
+		QnABoardVO vo=session.selectOne("qnaDetailData",no);
+		session.close();
+		return vo;
+	}
+	/*
+	 * <delete id="qnaDelete" parameterType="int">
+     DELETE FROM qnaBoard
+     WHERE group_id=#{group_id}
+	 */
+	public static void qnaDelete(int group_id)
+	{
+		SqlSession session=ssf.openSession(true);
+		session.delete("qnaDelete",group_id);
+		session.close();
+	}
+	/*
+	 * <delete id="qnaAdminDelete" parameterType="int">
+     DELETE FROM qnaBoard
+     WHERE group_id=#{group_id} AND group_step=1
+	 */
+	/*
+	 * <update id="qnaAdminAnDelete" parameterType="int">
+     UPDATE qnaBoard SET 
+     anok='n'
+     WHERE group_id=#{group_id}
+   </update>
+	 */
+	public static void qnaAdminAnDelete(int group_id)
+	{
+		SqlSession session=ssf.openSession(true);
+		session.update("qnaAdminDelete",group_id);
+		session.delete("qnaAdminAnDelete",group_id);
+		session.close();
+	}
 }

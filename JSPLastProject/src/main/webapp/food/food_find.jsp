@@ -165,10 +165,8 @@ function jsonView(json)
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                             <select id="fd" class="form-control-sm">
+                             <select id="fd" class="form-sm">
                                <option value="name">업체명</option>
-                               
-              
                                <option value="type">음식종류</option>
                                <option value="theme">테마</option>
                                <option value="address" selected>주소</option>

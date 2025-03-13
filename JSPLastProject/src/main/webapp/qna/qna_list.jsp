@@ -80,9 +80,9 @@
                <tr>
                 
                 <td class="text-right">
-                 <a href="../board/board_list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-outline-info btn-sm">이전</a>
+                 <a href="../qna/qna_list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-outline-info btn-sm">이전</a>
                   ${curpage } page / ${totalpage } pages
-                 <a href="../board/board_list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-outline-success btn-sm">다음</a>
+                 <a href="../qna/qna_list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-outline-success btn-sm">다음</a>
                 </td>
                </tr>
              </table>

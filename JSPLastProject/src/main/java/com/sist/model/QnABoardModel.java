@@ -66,7 +66,7 @@ public class QnABoardModel {
 	}
 	
 	//관리자 모드
-	@RequestMapping("admin/qna_admin_list.do")
+	@RequestMapping("qna/qna_admin_list.do")
 	public String qna_admin_list(HttpServletRequest request,HttpServletResponse response)
 	{
 		String page=request.getParameter("page");
@@ -102,5 +102,49 @@ public class QnABoardModel {
 		request.setAttribute("admin_jsp", "../qna/qna_admin_insert.jsp");
 		request.setAttribute("main_jsp", "../adminpage/admin_main.jsp");
 		return "../main/main.jsp";
+	}
+	@RequestMapping("qna/qna_admin_insert_ok.do")
+	public String qna_admin_insert_ok(HttpServletRequest request,HttpServletResponse response)
+	{
+		String subject=request.getParameter("subject");
+		String content=request.getParameter("content");
+		String pwd=request.getParameter("pwd");
+		String group_id=request.getParameter("group_id");
+		
+		HttpSession session=request.getSession();
+		String id=(String)session.getAttribute("id");
+		
+		QnABoardVO vo=new QnABoardVO();
+		vo.setId(id);
+		vo.setGroup_id(Integer.parseInt(group_id));
+		vo.setSubject(subject);
+		vo.setContent(content);
+		vo.setPwd(pwd);
+		
+		QnABoardDAO.qnaAdminInsert(vo);
+		return "redirect:../qna/qna_admin_list.do";
+	}
+	@RequestMapping("qna/qna_detail.do")
+	public String qna_detail(HttpServletRequest request,HttpServletResponse response)
+	{
+		String no=request.getParameter("no");
+		QnABoardVO vo=QnABoardDAO.qnaDetailData(Integer.parseInt(no));
+		request.setAttribute("vo", vo);
+		request.setAttribute("main_jsp", "../qna/qna_detail.jsp");
+		return "../main/main.jsp";
+	}
+	@RequestMapping("qna/qna_delete.do")
+	public String qna_delete(HttpServletRequest request,HttpServletResponse response)
+	{
+		String gi=request.getParameter("group_id");
+		QnABoardDAO.qnaDelete(Integer.parseInt(gi));
+		return "redirect:../qna/qna_list.do";
+	}
+	@RequestMapping("qna/qna_admin_delete.do")
+	public String qna_admin_delete(HttpServletRequest request,HttpServletResponse response)
+	{
+		String gi=request.getParameter("gi");
+		QnABoardDAO.qnaAdminAnDelete(Integer.parseInt(gi));
+		return "redirect:../qna/qna_admin_list.do";
 	}
 }
