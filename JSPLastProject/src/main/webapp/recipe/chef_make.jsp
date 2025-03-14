@@ -14,7 +14,8 @@
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="bradcumb-title text-center">
-                        <h2>레시피 목록</h2>
+                        <h2>&laquo;${chef }&raquo;레시피</h2>
+                        <!-- 이중꺽쇠 -->
                     </div>
                 </div>
             </div>
@@ -104,7 +105,7 @@
                                 
                                 <c:if test="${endPage<totalpage }">
                                  <li class="page-item">
-                                    <a class="page-link" href="../recipe/recipe_list.do?page=${endPage+1 }">다음 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                                    <a class="page-link" href="../recipe/chef_make.do?no=${no }page=${endPage+1 }">다음 <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
                                  </li>
                                 </c:if>
                             </ul>

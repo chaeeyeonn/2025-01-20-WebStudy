@@ -136,9 +136,35 @@ public class QnABoardDAO {
 	{
 		SqlSession session=ssf.openSession();
 		session.update("qnaHitIncrement",no);
+		session.commit();
+		// executeUpdate => commit() 포함
+		// session.update => commit() 불포함
 		QnABoardVO vo=session.selectOne("qnaDetailData",no);
 		session.close();
 		return vo;
+	}
+	// => 회원 수정과 동일 방식
+	// but, id(비활성화)
+	// 6개월 뒤 비번 변경 => 오라클: addMonth()
+	public static QnABoardVO qnaUpdateData(int no)
+	{
+		SqlSession session=ssf.openSession();
+		QnABoardVO vo=session.selectOne("qnaDetailData",no);
+		session.close();
+		return vo;
+	}
+	/*
+	 * <update id="qnaUpdate" parameterType="QnABoardVO">
+     UPDATE qnaBoard SET
+     subject=#{subject},content=#{content}
+     WHERE no=#{no}
+	 */
+	public static void qnaUpdate(QnABoardVO vo)
+	{
+		//insert,update,delete 아무거나 써도 되긴 함 => 가독성 위한 구분
+		SqlSession session=ssf.openSession(true);
+		session.update("qnaUpdate",vo);
+		session.close();
 	}
 	/*
 	 * <delete id="qnaDelete" parameterType="int">

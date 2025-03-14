@@ -140,6 +140,47 @@ public class QnABoardModel {
 		QnABoardDAO.qnaDelete(Integer.parseInt(gi));
 		return "redirect:../qna/qna_list.do";
 	}
+	/*
+	 *  - void: JavaScript 연동, ajax
+	 *  - main.jsp: 화면 출력
+	 *  - redirect: 이전 화면
+	 *  
+	 *  => 스프링과 동일
+	 */
+	@RequestMapping("qna/qna_update.do")
+	public String qna_update(HttpServletRequest request,HttpServletResponse response)
+	{
+		String no=request.getParameter("no");
+		
+		// 사용자 요청 데이터 => ?no=1, submit
+		/*
+		 *  <input type=text name="id">
+		 *  => ?id=aaa
+		 *  post, get 모두 값을 보내는 것이지만
+		 *  get은 url에 값이 보임 => 보안: post
+		 */
+		QnABoardVO vo=QnABoardDAO.qnaUpdateData(Integer.parseInt(no));
+		// web은 모두 String으로 받음 => parameter는 int였으니 parseInt 필요
+		request.setAttribute("vo", vo);
+		request.setAttribute("main_jsp", "../qna/qna_update.jsp");
+		return "../main/main.jsp";
+	}
+	// String => 화면 변경
+	// void => ajax 화면 안 바꿈
+	@RequestMapping("qna/qna_update_ok.do")
+	public void qna_update_ok(HttpServletRequest request,HttpServletResponse response)
+	{
+		String subject=request.getParameter("subject");
+		String content=request.getParameter("content");
+		String no=request.getParameter("no");
+		
+		QnABoardVO vo=new QnABoardVO();
+		vo.setSubject(subject);
+		vo.setContent(content);
+		vo.setNo(Integer.parseInt(no));
+		
+		QnABoardDAO.qnaUpdate(vo);
+	}
 	@RequestMapping("qna/qna_admin_delete.do")
 	public String qna_admin_delete(HttpServletRequest request,HttpServletResponse response)
 	{
@@ -147,4 +188,5 @@ public class QnABoardModel {
 		QnABoardDAO.qnaAdminAnDelete(Integer.parseInt(gi));
 		return "redirect:../qna/qna_admin_list.do";
 	}
+	
 }
