@@ -51,4 +51,27 @@ public class ReplyDAO {
     	session.close();
     	return count;
     }
+    /*
+     * <delete id="replyDelete" parameterType="int">
+    DELETE FROM all_comment
+    WHERE cno=#{cno}
+     */
+    public static void replyDelete(int cno)
+    {
+    	SqlSession session=ssf.openSession(true);
+    	session.delete("replyDelete",cno);
+    	session.close();
+    }
+    /*
+     * <update id="replyUpdate" parameterType="ReplyVO">
+    UPDATE all_comment SET
+    msg=#{msg}
+    WHERE cno=#{cno}
+     */
+    public static void replyUpdate(ReplyVO vo)
+    {
+    	SqlSession session=ssf.openSession(true);
+    	session.update("replyUpdate",vo);
+    	session.close();
+    }
 }
