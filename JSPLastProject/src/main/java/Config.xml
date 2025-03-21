@@ -22,6 +22,8 @@
      <typeAlias type="com.sist.vo.QnABoardVO" alias="QnABoardVO"/> 
      <typeAlias type="com.sist.vo.ReplyVO" alias="ReplyVO"/> 
      <typeAlias type="com.sist.vo.JjimVO" alias="JjimVO"/> 
+     <typeAlias type="com.sist.vo.GoodsVO" alias="GoodsVO"/> 
+     <typeAlias type="com.sist.vo.CartVO" alias="CartVO"/> 
    </typeAliases>
    <environments default="development">
      <environment id="development">
@@ -60,6 +62,8 @@
      <mapper resource="com/sist/mapper/qna-mapper.xml"/>
      <mapper resource="com/sist/mapper/reply-mapper.xml"/>
      <mapper resource="com/sist/mapper/jjim-mapper.xml"/>
+     <mapper resource="com/sist/mapper/goods-mapper.xml"/>
+     <mapper resource="com/sist/mapper/cart-mapper.xml"/>
    </mappers>
    <!-- 
           동적 쿼리 
